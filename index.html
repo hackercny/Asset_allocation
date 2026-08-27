@@ -78,6 +78,10 @@ html:not(.dark) .nav-pills button{color:#475569}
 html:not(.dark) .hero{background:#f1f5f9}
 .hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
 html:not(.dark) .hero-canvas{opacity:.5}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero .hero-img{opacity:.5}
+html:not(.dark) .hero .hero-img{opacity:.25}
+.retail-hero .hero-img{opacity:.4}
 .hero-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent,transparent 40%,var(--inst-900));pointer-events:none}
 html:not(.dark) .hero-fade{background:linear-gradient(to bottom,transparent,transparent 40%,#f1f5f9)}
 .hero-inner{position:relative;z-index:10;width:100%;max-width:1100px;margin:0 auto;padding:0 20px;text-align:center}
@@ -266,6 +270,29 @@ input[type=range]{flex:1;accent-color:var(--retail-gold)}
 .scan-qr{width:140px;height:140px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto}
 .scan-tip{margin-top:14px;font-size:12px;color:#94a3b8;line-height:1.8}
 
+/* ============ COUPON ============ */
+.coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:center;margin-top:8px}
+@media(min-width:768px){.coupon-wrap{grid-template-columns:1.25fr .75fr}}
+.coupon{position:relative;display:grid;grid-template-columns:1fr 132px;border-radius:20px;overflow:hidden;background:linear-gradient(120deg,#16213e 0%,#0f3460 70%,#16406e 100%);border:1px solid rgba(245,197,66,.4);box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.coupon .cut{position:absolute;left:calc(100% - 132px);top:0;bottom:0;border-left:2px dashed rgba(245,197,66,.45)}
+.coupon .notch{position:absolute;left:calc(100% - 132px);width:14px;height:14px;border-radius:50%;background:var(--retail-900);transform:translate(-50%,-50%);top:0}
+.coupon .notch.b{top:auto;bottom:0;transform:translate(-50%,50%)}
+.coupon .c-left{padding:22px 20px;text-align:left}
+.coupon .c-brand{font-size:11px;letter-spacing:.14em;color:var(--retail-gold);font-weight:700;margin-bottom:10px}
+.coupon .c-amount{display:flex;align-items:baseline;gap:8px}
+.coupon .c-amount .cur{font-size:20px;color:var(--retail-gold);font-weight:700}
+.coupon .c-amount .val{font-size:52px;font-weight:800;color:#fff;line-height:1}
+.coupon .c-amount .off{font-size:13px;color:#cbd5e1;border-left:1px solid rgba(255,255,255,.2);padding-left:10px}
+.coupon .c-terms{font-size:12px;color:#94a3b8;margin-top:10px;line-height:1.6}
+.coupon .c-exp{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:#e2e8f0;border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:3px 10px}
+.coupon .c-right{position:relative;padding:16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(245,197,66,.05)}
+.coupon .c-right .c-qr{width:92px;height:92px;border-radius:10px;background:#fff;padding:5px;display:block}
+.coupon .c-right .c-tip{font-size:11px;color:var(--retail-gold);font-weight:600}
+.wxcard{border-radius:20px;padding:26px;text-align:center}
+.wxcard .wq{width:150px;height:150px;border-radius:14px;background:#fff;padding:8px;margin:0 auto;display:block}
+.wxcard .wt{font-size:15px;font-weight:700;margin-bottom:6px}
+.wxcard .wd{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.8}
+
 /* wechat float */
 .wx{position:fixed;bottom:18px;right:18px;z-index:60}
 .wx-pop{position:absolute;bottom:62px;right:0;border-radius:16px;padding:20px;width:220px}
@@ -273,7 +300,7 @@ input[type=range]{flex:1;accent-color:var(--retail-gold)}
 html:not(.dark) .wx-pop .t{color:#1a1a2e}
 .wx-pop .d{font-size:12px;color:#94a3b8;margin-bottom:10px}
 .wx-pop .id{font-size:18px;font-weight:800;margin-bottom:10px}
-.wx-pop .qr{width:100%;height:120px;border-radius:12px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center}
+.wx-pop .popqr{width:100%;height:120px;border-radius:12px;background:#fff;padding:8px;object-fit:contain;display:block}
 .wx-btn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.3);background:linear-gradient(135deg,#07c160,#06ad56);transition:transform .2s}
 .wx-btn:hover{transform:scale(1.1)}
 .wx-badge{position:absolute;top:-4px;right:-4px;background:var(--retail-accent);color:#fff;font-size:10px;padding:1px 6px;border-radius:999px;animation:pulse 2s infinite}
@@ -306,7 +333,7 @@ svg{display:block}
     <div class="t">添加微信咨询</div>
     <div class="d">客服微信号：</div>
     <div class="id gold-text">macroficc</div>
-    <div class="qr"><svg width="60" height="60" viewBox="0 0 24 24" fill="#07c160"><path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 2.08 1.13 3.93 2.89 5.14L4 18l2.6-1.4c.9.25 1.86.4 2.9.4.18 0 .36-.01.54-.02A5.8 5.8 0 0 1 9.7 15c0-3.3 3.13-6 7-6 .2 0 .39.01.58.03C16.66 5.6 13.36 4 9.5 4zm-3 4.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm6 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM16.7 10c-3.2 0-5.7 2.24-5.7 5 0 2.76 2.5 5 5.7 5 .78 0 1.52-.13 2.2-.37L21 21l-.6-1.7A4.96 4.96 0 0 0 22.4 16c0-2.76-2.5-6-5.7-6zm-2 3a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z"/></svg></div>
+    <img class="popqr" src="assets/qr-wechat.jpg" alt="微信客服二维码">
     <div class="d" style="text-align:center;margin-top:8px">扫码或搜索微信号添加</div>
   </div>
   <button class="wx-btn" id="wxBtn" aria-label="微信客服">
@@ -318,16 +345,17 @@ svg{display:block}
 <script>
 /* ============ DATA ============ */
 const ASSETS=[
-{name:'恒科',full:'恒生科技指数',tag:'多',dir:1,price:'3,847',chg:'+2.34%',note:'估值修复+流动性回暖'},
-{name:'印度',full:'印度Nifty50',tag:'多',dir:1,price:'24,318',chg:'+0.87%',note:'外资回流+卢比企稳'},
-{name:'中债',full:'中证10年国债',tag:'多',dir:1,price:'104.62',chg:'+0.21%',note:'宽货币延续+基本面待验'},
-{name:'美债',full:'美10Y收益率',tag:'空',dir:-1,price:'4.31%',chg:'+5bp',note:'期限溢价回升+财政扩张'},
-{name:'黄金',full:'COMEX黄金',tag:'多',dir:1,price:'2,548',chg:'+1.12%',note:'央行购金+实际利率下行'},
-{name:'铜',full:'LME铜',tag:'空',dir:-1,price:'9,012',chg:'-0.93%',note:'需求弱修复+库存累积'},
-{name:'黑色',full:'螺纹钢主力',tag:'空',dir:-1,price:'3,142',chg:'-1.45%',note:'地产拖累+供给偏高'},
-{name:'欧元',full:'EUR/USD',tag:'多',dir:1,price:'1.0892',chg:'+0.31%',note:'利差收窄+欧元区复苏'},
-{name:'日元',full:'USD/JPY',tag:'空',dir:-1,price:'146.8',chg:'+0.52%',note:'利差维持+干预边界临近'}
+{name:'恒科',full:'恒生科技指数',tag:'多',dir:1,price:'4,620',chg:'-0.13%',note:'估值修复+流动性回暖'},
+{name:'印度',full:'印度Nifty50',tag:'多',dir:1,price:'24,335',chg:'+0.48%',note:'外资回流+卢比企稳'},
+{name:'中债',full:'中债10Y到期收益率',tag:'多',dir:1,price:'1.70%',chg:'+1bp',note:'宽货币延续+基本面待验'},
+{name:'美债',full:'美10Y收益率',tag:'空',dir:-1,price:'4.66%',chg:'+2bp',note:'期限溢价回升+财政扩张'},
+{name:'黄金',full:'COMEX黄金',tag:'多',dir:1,price:'4,608',chg:'-0.48%',note:'央行购金+实际利率下行'},
+{name:'铜',full:'LME铜3个月',tag:'空',dir:-1,price:'14,233',chg:'-0.64%',note:'需求弱修复+库存累积'},
+{name:'黑色',full:'螺纹钢活跃合约',tag:'空',dir:-1,price:'3,088',chg:'+0.39%',note:'地产拖累+供给偏高'},
+{name:'欧元',full:'EUR/USD',tag:'多',dir:1,price:'1.1654',chg:'-0.18%',note:'利差收窄+欧元区复苏'},
+{name:'日元',full:'USD/JPY',tag:'空',dir:-1,price:'159.31',chg:'+0.07%',note:'利差维持+干预边界临近'}
 ];
+const DATA_AS_OF='数据来源：Wind · 截至 2026-08-27';
 const INST_TYPES=['私募基金','券商自营','期货资管','信托公司','公募专户','外资行','家族办公室','保险资管'];
 const METRICS=[{n:9,s:'+',l:'覆盖资产类别'},{n:20,s:'+',l:'原创投研框架'},{n:3,s:'',l:'专业数据终端'},{n:1200,s:'+',l:'散户社群成员'}];
 const TIMELINE=[
@@ -448,7 +476,7 @@ function homeHTML(){
   const mq=[...INST_TYPES,...INST_TYPES].map(t=>`<span><span class="d"></span>${t}</span>`).join('');
   return `
   <section class="hero">
-    <canvas class="hero-canvas" data-canvas="dark"></canvas>
+    <img class="hero-img" src="assets/hero-bg.jpg" alt="" aria-hidden="true">
     <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none"></div>
     <div class="hero-fade"></div>
     <div class="hero-inner">
@@ -472,7 +500,7 @@ function instHTML(){
   return `
   <div class="inst-page">
     <section class="section container" style="position:relative;overflow:hidden">
-      <canvas class="hero-canvas" style="opacity:.35" data-canvas="dark"></canvas>
+      <img class="hero-img" src="assets/hero-bg.jpg" style="opacity:.22" alt="" aria-hidden="true">
       <div style="position:relative">
         <div class="badge glass" style="display:inline-flex">${svg(I.building,14)} 机构专区 · INSTITUTIONAL</div>
         <h2 style="margin-top:16px">投研效率提升<br><span class="gold-text">打破信息壁垒</span></h2>
@@ -529,7 +557,7 @@ function retailHTML(){
   return `
   <div class="retail-page">
     <section class="retail-hero">
-      <canvas class="canvas" data-canvas="dark"></canvas>
+      <img class="hero-img" src="assets/hero-bg.jpg" alt="" aria-hidden="true">
       <div class="inner">
         <div class="badge glass" style="display:inline-flex;color:var(--retail-gold)">${svg(I.spark,12)} 散户专区 · RETAIL</div>
         <h2 style="margin-top:16px">把握一个品种<br><span class="gold-text">即可赚钱</span></h2>
@@ -537,7 +565,7 @@ function retailHTML(){
       </div>
     </section>
     <section class="section container">
-      <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:18px"><div><h3 style="font-size:20px;font-weight:800">覆盖交易机会</h3><p class="sub" style="margin-top:4px">9 大品种前瞻信号 · 多空状态实时跟踪</p></div><span style="font-size:10px;color:#64748b">示意数据，以星球内发布为准</span></div>
+      <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:18px"><div><h3 style="font-size:20px;font-weight:800">覆盖交易机会</h3><p class="sub" style="margin-top:4px">9 大品种前瞻信号 · 多空状态实时跟踪</p></div><span style="font-size:10px;color:#64748b">${DATA_AS_OF}</span></div>
       <div class="assets hide-scroll">${cards}</div>
     </section>
     <section class="section container center"><h3 style="font-size:24px;font-weight:800">成长路径</h3><p class="sub">从认知建立到实盘跟随，四步构建交易体系</p>
@@ -586,11 +614,27 @@ function retailHTML(){
         </div>
       </div>
     </section>
-    <section class="section container">
-      <div class="scan glass center">
-        <h3>微信扫码加入</h3><p class="d">添加客服 macroficc，获取最新加入通道与定价</p>
-        <div class="scan-qr glass">${svg(I.wechat,80)}</div>
-        <div class="scan-tip">🍎 苹果用户：长按二维码 → 识别图中公众号<br>🤖 安卓用户：截图后打开微信扫一扫</div>
+    <section class="section container center">
+      <h3 style="font-size:24px;font-weight:800">限时优惠券</h3><p class="sub">领取星球专享券，首年订阅立减 100 元</p>
+      <div class="coupon-wrap">
+        <div class="coupon reveal">
+          <div class="cut"></div><div class="notch"></div><div class="notch b"></div>
+          <div class="c-left">
+            <div class="c-brand">全球宏观投研交易 · 会员专享</div>
+            <div class="c-amount"><span class="cur num">¥</span><span class="val num">100</span><span class="off">新会员首年立减</span></div>
+            <div class="c-terms">适用于年费会员首年订阅 · 每人限用一张<br>可与邀请返利叠加使用</div>
+            <div class="c-exp">${svg(I.spark,12)} 有效期至 2026-12-31</div>
+          </div>
+          <div class="c-right">
+            <img class="c-qr" src="assets/qr-wechat.jpg" alt="星球优惠券二维码" loading="lazy">
+            <div class="c-tip">扫码领券</div>
+          </div>
+        </div>
+        <div class="wxcard glass reveal">
+          <div class="wt">微信扫码加入</div>
+          <img class="wq" src="assets/qr-wechat.jpg" alt="微信客服二维码" loading="lazy">
+          <div class="wd">添加客服 macroficc<br>获取最新加入通道与定价</div>
+        </div>
       </div>
     </section>
     <div class="spacer"></div>
