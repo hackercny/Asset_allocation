@@ -271,27 +271,46 @@ input[type=range]{flex:1;accent-color:var(--retail-gold)}
 .scan-tip{margin-top:14px;font-size:12px;color:#94a3b8;line-height:1.8}
 
 /* ============ COUPON ============ */
-.coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:center;margin-top:8px}
+.coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch;margin-top:8px}
 @media(min-width:768px){.coupon-wrap{grid-template-columns:1.25fr .75fr}}
-.coupon{position:relative;display:grid;grid-template-columns:1fr 132px;border-radius:20px;overflow:hidden;background:linear-gradient(120deg,#16213e 0%,#0f3460 70%,#16406e 100%);border:1px solid rgba(245,197,66,.4);box-shadow:0 18px 44px rgba(0,0,0,.35)}
-.coupon .cut{position:absolute;left:calc(100% - 132px);top:0;bottom:0;border-left:2px dashed rgba(245,197,66,.45)}
-.coupon .notch{position:absolute;left:calc(100% - 132px);width:14px;height:14px;border-radius:50%;background:var(--retail-900);transform:translate(-50%,-50%);top:0}
-.coupon .notch.b{top:auto;bottom:0;transform:translate(-50%,50%)}
-.coupon .c-left{padding:22px 20px;text-align:left}
-.coupon .c-brand{font-size:11px;letter-spacing:.14em;color:var(--retail-gold);font-weight:700;margin-bottom:10px}
-.coupon .c-amount{display:flex;align-items:baseline;gap:8px}
-.coupon .c-amount .cur{font-size:20px;color:var(--retail-gold);font-weight:700}
-.coupon .c-amount .val{font-size:52px;font-weight:800;color:#fff;line-height:1}
-.coupon .c-amount .off{font-size:13px;color:#cbd5e1;border-left:1px solid rgba(255,255,255,.2);padding-left:10px}
-.coupon .c-terms{font-size:12px;color:#94a3b8;margin-top:10px;line-height:1.6}
-.coupon .c-exp{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:#e2e8f0;border:1px solid rgba(245,197,66,.35);border-radius:999px;padding:3px 10px}
-.coupon .c-right{position:relative;padding:16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(245,197,66,.05)}
-.coupon .c-right .c-qr{width:92px;height:92px;border-radius:10px;background:#fff;padding:5px;display:block}
-.coupon .c-right .c-tip{font-size:11px;color:var(--retail-gold);font-weight:600}
-.wxcard{border-radius:20px;padding:26px;text-align:center}
-.wxcard .wq{width:150px;height:150px;border-radius:14px;background:#fff;padding:8px;margin:0 auto;display:block}
-.wxcard .wt{font-size:15px;font-weight:700;margin-bottom:6px}
-.wxcard .wd{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.8}
+.coupon{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#fff8f1 0%,#fff 60%);box-shadow:0 18px 46px rgba(233,69,96,.22),0 4px 18px rgba(0,0,0,.06)}
+.coupon .c-head{padding:26px 28px 18px;text-align:center;background:linear-gradient(180deg,#fff8f1 0%,#fff 100%);position:relative}
+.coupon .c-brand{font-size:12px;color:#64748b;letter-spacing:.08em;margin-bottom:10px}
+.coupon .c-logo{width:68px;height:68px;margin:0 auto 10px;border-radius:50%;background:linear-gradient(160deg,#fff,#fff4ea);box-shadow:0 6px 20px rgba(233,69,96,.1);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.coupon .c-logo img{width:64px;height:64px;object-fit:contain}
+.coupon .c-logo .g{font-size:28px}
+.coupon .c-title{font-size:22px;font-weight:800;color:#1a1a2e;letter-spacing:.02em;margin-bottom:2px}
+.coupon .c-title .q{color:#e94560;font-size:13px;margin:0 4px;font-weight:700}
+.coupon .c-ticket{position:relative;margin:0 18px 18px;border-radius:16px;background:linear-gradient(105deg,#ffb870 0%,#f88a52 35%,#ef605e 70%,#e94560 100%);box-shadow:0 10px 26px rgba(233,69,96,.35);overflow:hidden}
+.coupon .c-ticket .cut{position:absolute;left:34%;top:0;bottom:0;border-left:2px dashed rgba(255,255,255,.6)}
+.coupon .c-ticket .notch{position:absolute;left:34%;width:18px;height:18px;border-radius:50%;background:#fff8f1;transform:translate(-50%,-50%);top:0;box-shadow:inset 0 -2px 4px rgba(0,0,0,.06)}
+.coupon .c-ticket .notch.b{top:auto;bottom:0;transform:translate(-50%,50%);box-shadow:inset 0 2px 4px rgba(0,0,0,.06)}
+.coupon .c-ticket .lcol{width:34%;padding:18px 12px 18px 20px;text-align:left;float:left}
+.coupon .c-ticket .lcol .tag{display:inline-block;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.28);color:#fff;font-size:11px;font-weight:700;letter-spacing:.05em;margin-bottom:10px}
+.coupon .c-ticket .lcol .amt{display:flex;align-items:baseline;gap:4px;color:#fff;line-height:1}
+.coupon .c-ticket .lcol .amt .c{font-size:22px;font-weight:700}
+.coupon .c-ticket .lcol .amt .v{font-size:58px;font-weight:800}
+.coupon .c-ticket .rcol{margin-left:34%;padding:18px 18px 18px 14px;color:#fff;text-align:left}
+.coupon .c-ticket .rcol .ttl{font-size:20px;font-weight:800;margin-bottom:6px;letter-spacing:.02em}
+.coupon .c-ticket .rcol .exp{font-size:12px;color:rgba(255,255,255,.92);line-height:1.6}
+.coupon .c-foot{padding:12px 28px 20px;border-top:1px dashed rgba(15,52,96,.1);display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.coupon .c-foot .zsxq{display:flex;align-items:center;gap:10px}
+.coupon .c-foot .zsxq .zc{width:26px;height:26px;border-radius:50%;background:#4c9ed9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.coupon .c-foot .zsxq .zttl{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.2}
+.coupon .c-foot .zsxq .zsub{font-size:12px;color:#64748b;line-height:1.2}
+.coupon .c-foot .zsxq-qr{width:82px;height:82px;border-radius:10px;background:#fff;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin:-20px 0 0;flex-shrink:0;overflow:hidden}
+.coupon .c-foot .zsxq-qr img{width:100%;height:100%;object-fit:contain;display:block}
+.wxcard{border-radius:22px;padding:26px;text-align:center;background:linear-gradient(160deg,#ffffff,#f0f9ff)}
+html.dark .wxcard{background:linear-gradient(160deg,#16213e,#0f3460)}
+.wxcard .w-head{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px}
+.wxcard .w-head .w-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#07c160,#06ad56);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
+.wxcard .wt{font-size:16px;font-weight:800;color:#1a1a2e;margin:0}
+html.dark .wxcard .wt{color:#fff}
+.wxcard .wq{width:170px;height:170px;border-radius:16px;background:#fff;padding:10px;margin:0 auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.08);border:2px solid #07c160}
+.wxcard .wdesc{font-size:13px;color:#475569;margin-top:14px;font-weight:600}
+html.dark .wxcard .wdesc{color:#cbd5e1}
+.wxcard .wd{font-size:12px;color:#64748b;margin-top:8px;line-height:1.8}
+html.dark .wxcard .wd{color:#94a3b8}
 
 /* wechat float */
 .wx{position:fixed;bottom:18px;right:18px;z-index:60}
@@ -333,7 +352,7 @@ svg{display:block}
     <div class="t">添加微信咨询</div>
     <div class="d">客服微信号：</div>
     <div class="id gold-text">macroficc</div>
-    <img class="popqr" src="assets/qr-wechat.jpg" alt="微信客服二维码">
+    <img class="popqr" src="assets/qr-wechat-official.png" alt="微信客服二维码" onerror="this.style.display='none'">
     <div class="d" style="text-align:center;margin-top:8px">扫码或搜索微信号添加</div>
   </div>
   <button class="wx-btn" id="wxBtn" aria-label="微信客服">
@@ -365,7 +384,9 @@ const TIMELINE=[
 {stage:'持续',title:'进阶专属群',desc:'获取彭博/路透终端截图，参与路演复盘与交易纠错工作坊'}
 ];
 const BENEFITS=['前瞻交易信号（9大品种）','原创投研框架 20+ 篇','Wind/Eikon/彭博数据查询','专属交流群与路演','视频课程 + 电子书','邀请返利机制'];
-const YEAR_PRICE=699,PER_INVITE=100,CURRENT=20,NEXT=40;
+const YEAR_PRICE=499,COUPON=200,PER_INVITE=100,CURRENT=20,NEXT=40;
+const COUPON_EXPIRE='2026/12/31 12:00';
+const FREE_NEED=Math.ceil((YEAR_PRICE-COUPON)/PER_INVITE);
 
 /* ============ ICONS ============ */
 const I={
@@ -550,7 +571,7 @@ function instHTML(){
 function retailHTML(){
   const cards=ASSETS.map(a=>`<div class="asset ${a.dir>0?'long':'short'} glass" style="border-color:${a.dir>0?'rgba(76,217,158,.25)':'rgba(233,69,96,.25)'}"><div class="top"><span class="nm">${a.name}</span><span class="tag">${a.tag}</span></div><div class="px num">${a.price}</div><div class="chg num">${a.chg}</div><div class="note">${a.note}</div><div class="full">${a.full}</div></div>`).join('');
   const tl=TIMELINE.map((t,i)=>`<div class="tl-item ${i%2===0?'left':'right'} reveal"><div class="tl-dot"></div><div class="tl-card"><div class="tl-inner glass"><div class="tl-stage num">${t.stage}</div><h4>${t.title}</h4><p>${t.desc}</p></div></div></div>`).join('');
-  const freeNeed=Math.ceil(YEAR_PRICE/PER_INVITE);
+  const freeNeed=FREE_NEED;
   const cdRemain=NEXT-CURRENT;
   const cdPct=Math.round(CURRENT/NEXT*100);
   const benefits=BENEFITS.map(b=>`<li>${svg(I.check,16)}${b}</li>`).join('');
@@ -577,7 +598,7 @@ function retailHTML(){
         <div class="calc-grid">
           <div>
             <h3>邀请返利计算器</h3>
-            <p class="desc">邀请 1 人得 <span style="color:var(--retail-gold);font-weight:700">100 元</span>，邀请 <span style="color:var(--retail-gold);font-weight:700">${freeNeed}</span> 人等于免费。返现可叠加续费折扣。</p>
+            <p class="desc">新人券减 <span style="color:var(--retail-gold);font-weight:700">¥${COUPON}</span>，邀请 1 人再得 <span style="color:var(--retail-gold);font-weight:700">¥${PER_INVITE}</span>，邀请 <span style="color:var(--retail-gold);font-weight:700">${freeNeed}</span> 人后零成本加入。</p>
             <div class="calc-row">
               <button class="calc-btn glass" onclick="setInv(Math.max(0,invited-1))">−</button>
               <input type="range" min="0" max="10" value="1" id="invRange" oninput="setInv(+this.value)">
@@ -586,9 +607,10 @@ function retailHTML(){
             <div class="calc-inv"><span style="font-size:14px;color:#94a3b8">已邀请</span><span class="n num" id="invN">1</span><span style="font-size:14px;color:#94a3b8">人</span></div>
           </div>
           <div class="calc-box glass">
-            <div class="calc-row2"><span class="l">年费</span><span class="v num" style="text-decoration:line-through;color:#64748b">¥${YEAR_PRICE}</span></div>
-            <div class="calc-row2"><span class="l">返现</span><span class="v num" style="color:#6ee7b7">−¥<span id="rebateN">100</span></span></div>
-            <div class="calc-final"><span class="l">实付</span><span class="v gold-text">¥<span id="finalN">599</span></span></div>
+            <div class="calc-row2"><span class="l">年费标价</span><span class="v num strike">¥${YEAR_PRICE}</span></div>
+            <div class="calc-row2"><span class="l">新人券</span><span class="v num" style="color:#f5c542">−¥${COUPON}</span></div>
+            <div class="calc-row2"><span class="l">邀请返现</span><span class="v num" style="color:#6ee7b7">−¥<span id="rebateN">${PER_INVITE}</span></span></div>
+            <div class="calc-final"><span class="l">实付首年</span><span class="v gold-text">¥<span id="finalN">${YEAR_PRICE-COUPON-PER_INVITE}</span></span></div>
             <div class="calc-free" id="freeTip" style="display:none">🎉 已实现免费加入！</div>
           </div>
         </div>
@@ -602,7 +624,7 @@ function retailHTML(){
             <span class="renew">续费七折</span>
             <div class="m">年费会员</div>
             <div class="price"><span class="c num">¥</span><span class="p gold-text">${YEAR_PRICE}</span><span class="y">/年</span></div>
-            <div class="orig">原价 ¥999</div>
+            <div class="orig">原价 ¥699 · 券后 ¥${YEAR_PRICE-COUPON}</div>
             <div class="hint">点击翻转查看权益 →</div>
             <div class="cd"><div class="t">距离下次涨价</div><div class="n num">还差 ${cdRemain} 篇原创框架</div><div class="cd-bar"><i style="width:${cdPct}%"></i></div><div class="s">已发布 ${CURRENT} 篇 / 满 ${NEXT} 篇涨价 100 元</div></div>
           </div>
@@ -615,25 +637,40 @@ function retailHTML(){
       </div>
     </section>
     <section class="section container center">
-      <h3 style="font-size:24px;font-weight:800">限时优惠券</h3><p class="sub">领取星球专享券，首年订阅立减 100 元</p>
+      <h3 style="font-size:24px;font-weight:800">星球新人优惠券</h3><p class="sub">立减 ¥${COUPON}，2026/12/31 前加入可直接使用</p>
       <div class="coupon-wrap">
         <div class="coupon reveal">
-          <div class="cut"></div><div class="notch"></div><div class="notch b"></div>
-          <div class="c-left">
-            <div class="c-brand">全球宏观投研交易 · 会员专享</div>
-            <div class="c-amount"><span class="cur num">¥</span><span class="val num">100</span><span class="off">新会员首年立减</span></div>
-            <div class="c-terms">适用于年费会员首年订阅 · 每人限用一张<br>可与邀请返利叠加使用</div>
-            <div class="c-exp">${svg(I.spark,12)} 有效期至 2026-12-31</div>
+          <div class="c-head">
+            <div class="c-brand">MACRO FICC · 全球宏观投研交易</div>
+            <div class="c-logo"><img src="assets/qr-coupon-logo.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="g" style="display:none">📈</span></div>
+            <div class="c-title"><span class="q">「</span>全球宏观投研交易<span class="q">」</span></div>
           </div>
-          <div class="c-right">
-            <img class="c-qr" src="assets/qr-wechat.jpg" alt="星球优惠券二维码" loading="lazy">
-            <div class="c-tip">扫码领券</div>
+          <div class="c-ticket">
+            <div class="cut"></div><div class="notch"></div><div class="notch b"></div>
+            <div class="lcol">
+              <span class="tag">立减</span>
+              <div class="amt"><span class="c num">¥</span><span class="v num">${COUPON}</span></div>
+            </div>
+            <div class="rcol">
+              <div class="ttl">新人立减券</div>
+              <div class="exp">${COUPON_EXPIRE} 后失效<br>首年订阅可用 · 每人 1 张</div>
+            </div>
+          </div>
+          <div class="c-foot">
+            <div class="zsxq">
+              <div class="zc">C</div>
+              <div><div class="zttl">知识星球</div><div class="zsub">长按扫码领取优惠 ›</div></div>
+            </div>
+            <div class="zsxq-qr">
+              <img src="assets/qr-zsxq-coupon.png" alt="星球优惠券扫码领券" onerror="this.style.display='none'" loading="lazy">
+            </div>
           </div>
         </div>
         <div class="wxcard glass reveal">
-          <div class="wt">微信扫码加入</div>
-          <img class="wq" src="assets/qr-wechat.jpg" alt="微信客服二维码" loading="lazy">
-          <div class="wd">添加客服 macroficc<br>获取最新加入通道与定价</div>
+          <div class="w-head"><div class="w-logo">微</div><div class="wt">添加客服微信</div></div>
+          <img class="wq" src="assets/qr-wechat-official.png" alt="微信客服官方二维码" onerror="this.style.border='1px solid #cbd5e1';this.style.padding='38px';this.innerHTML='';" loading="lazy">
+          <div class="wdesc">扫码或搜索微信号</div>
+          <div class="wd"><strong style="color:#e94560;font-size:14px">macroficc</strong><br>获取最新加入通道与定价</div>
         </div>
       </div>
     </section>
@@ -643,7 +680,7 @@ function retailHTML(){
 
 /* ============ STATE & INTERACTIONS ============ */
 let invited=1;
-function setInv(v){invited=v;const r=document.getElementById('invRange');if(r)r.value=v;const invN=document.getElementById('invN');if(invN)invN.textContent=v;const rebate=Math.min(v,5)*PER_INVITE;const final=Math.max(YEAR_PRICE-rebate,0);const rb=document.getElementById('rebateN');if(rb)rb.textContent=rebate;const fn=document.getElementById('finalN');if(fn)fn.textContent=final;const ft=document.getElementById('freeTip');if(ft)ft.style.display=v>=Math.ceil(YEAR_PRICE/PER_INVITE)?'block':'none';}
+function setInv(v){invited=v;const r=document.getElementById('invRange');if(r)r.value=v;const invN=document.getElementById('invN');if(invN)invN.textContent=v;const rebate=Math.min(v,5)*PER_INVITE;const coupon=COUPON;const totalOff=rebate+coupon;const final=Math.max(YEAR_PRICE-totalOff,0);const rb=document.getElementById('rebateN');if(rb)rb.textContent=rebate;const fn=document.getElementById('finalN');if(fn)fn.textContent=final;const ft=document.getElementById('freeTip');if(ft)ft.style.display=totalOff>=YEAR_PRICE?'block':'none';}
 function submitInst(){const f=document.getElementById('instForm');const v=id=>(document.getElementById(id)?.value||'').trim();if(!v('f1')||!v('f2')||!v('f3')||!v('f4')){alert('请填写完整信息');return;}f.innerHTML=`<div class="form-ok"><div class="ico">${svg(I.check,32)}</div><h4 style="font-size:18px;font-weight:700;margin-bottom:8px">申请已提交</h4><p class="d">机构销售将在 1 个工作日内与您联系，沟通定制方案。</p></div>`;}
 
 /* ============ AFTER RENDER ============ */
