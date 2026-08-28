@@ -1,0 +1,27 @@
+name: x-fetch
+on:
+  push:
+    paths:
+      - '.github/workflows/x-fetch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run fetch
+        run: python fetch_tweets.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tweets.json
+          git commit -m "update tweets data" || echo "no changes"
+          git push
