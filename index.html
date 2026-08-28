@@ -272,7 +272,21 @@ input[type=range]{flex:1;accent-color:var(--retail-gold)}
 
 /* ============ COUPON ============ */
 .coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch;margin-top:8px}
-@media(min-width:768px){.coupon-wrap{grid-template-columns:1.25fr .75fr}}
+@media(min-width:768px){.coupon-wrap{grid-template-columns:1.3fr .7fr}}
+.coupon-img-wrap{border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 18px 46px rgba(233,69,96,.18),0 4px 18px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center}
+.coupon-img{width:100%;height:auto;display:block;object-fit:contain}
+.coupon-img.dark-bg{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)}
+.coupon-fallback{width:100%;display:flex;background:linear-gradient(105deg,#ffb870 0%,#f88a52 35%,#ef605e 70%,#e94560 100%);border-radius:16px;color:#fff;padding:22px;gap:22px;align-items:center}
+.coupon-fallback .cb-left{flex:0 0 auto;text-align:center;border-right:2px dashed rgba(255,255,255,.5);padding-right:22px}
+.coupon-fallback .cb-tag{display:inline-block;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.28);font-size:11px;font-weight:700;margin-bottom:10px}
+.coupon-fallback .cb-amt{display:flex;align-items:baseline;gap:4px}
+.coupon-fallback .cb-amt .cb-yo{font-size:22px;font-weight:700}
+.coupon-fallback .cb-amt .cb-v{font-size:58px;font-weight:800;line-height:1}
+.coupon-fallback .cb-right{flex:1}
+.coupon-fallback .cb-title{font-size:20px;font-weight:800;margin-bottom:6px}
+.coupon-fallback .cb-exp{font-size:12px;color:rgba(255,255,255,.92);line-height:1.6}
+@media(max-width:480px){.coupon-fallback{flex-direction:column;text-align:center;gap:12px}.coupon-fallback .cb-left{border-right:none;border-bottom:2px dashed rgba(255,255,255,.5);padding-right:0;padding-bottom:12px}}
+
 .coupon{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#fff8f1 0%,#fff 60%);box-shadow:0 18px 46px rgba(233,69,96,.22),0 4px 18px rgba(0,0,0,.06)}
 .coupon .c-head{padding:26px 28px 18px;text-align:center;background:linear-gradient(180deg,#fff8f1 0%,#fff 100%);position:relative}
 .coupon .c-brand{font-size:12px;color:#64748b;letter-spacing:.08em;margin-bottom:10px}
@@ -306,7 +320,7 @@ html.dark .wxcard{background:linear-gradient(160deg,#16213e,#0f3460)}
 .wxcard .w-head .w-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#07c160,#06ad56);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
 .wxcard .wt{font-size:16px;font-weight:800;color:#1a1a2e;margin:0}
 html.dark .wxcard .wt{color:#fff}
-.wxcard .wq{width:170px;height:170px;border-radius:16px;background:#fff;padding:10px;margin:0 auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.08);border:2px solid #07c160}
+.wxcard .wq{width:170px;height:170px;border-radius:16px;background:#fff;padding:4px;margin:0 auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.1)}
 .wxcard .wdesc{font-size:13px;color:#475569;margin-top:14px;font-weight:600}
 html.dark .wxcard .wdesc{color:#cbd5e1}
 .wxcard .wd{font-size:12px;color:#64748b;margin-top:8px;line-height:1.8}
@@ -384,8 +398,8 @@ const TIMELINE=[
 {stage:'持续',title:'进阶专属群',desc:'获取彭博/路透终端截图，参与路演复盘与交易纠错工作坊'}
 ];
 const BENEFITS=['前瞻交易信号（9大品种）','原创投研框架 20+ 篇','Wind/Eikon/彭博数据查询','专属交流群与路演','视频课程 + 电子书','邀请返利机制'];
-const YEAR_PRICE=499,COUPON=200,PER_INVITE=100,CURRENT=20,NEXT=40;
-const COUPON_EXPIRE='2026/12/31 12:00';
+const YEAR_PRICE=499,COUPON=100,PER_INVITE=100,CURRENT=20,NEXT=40;
+const COUPON_EXPIRE='2030/07/15 12:00';
 const FREE_NEED=Math.ceil((YEAR_PRICE-COUPON)/PER_INVITE);
 
 /* ============ ICONS ============ */
@@ -637,40 +651,20 @@ function retailHTML(){
       </div>
     </section>
     <section class="section container center">
-      <h3 style="font-size:24px;font-weight:800">星球新人优惠券</h3><p class="sub">立减 ¥${COUPON}，2026/12/31 前加入可直接使用</p>
+      <h3 style="font-size:24px;font-weight:800">星球新人优惠券 · 客服微信</h3><p class="sub">立减 ¥${COUPON}，2030/07/15 前加入可直接使用</p>
       <div class="coupon-wrap">
-        <div class="coupon reveal">
-          <div class="c-head">
-            <div class="c-brand">MACRO FICC · 全球宏观投研交易</div>
-            <div class="c-logo"><img src="assets/qr-coupon-logo.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="g" style="display:none">📈</span></div>
-            <div class="c-title"><span class="q">「</span>全球宏观投研交易<span class="q">」</span></div>
-          </div>
-          <div class="c-ticket">
-            <div class="cut"></div><div class="notch"></div><div class="notch b"></div>
-            <div class="lcol">
-              <span class="tag">立减</span>
-              <div class="amt"><span class="c num">¥</span><span class="v num">${COUPON}</span></div>
-            </div>
-            <div class="rcol">
-              <div class="ttl">新人立减券</div>
-              <div class="exp">${COUPON_EXPIRE} 后失效<br>首年订阅可用 · 每人 1 张</div>
-            </div>
-          </div>
-          <div class="c-foot">
-            <div class="zsxq">
-              <div class="zc">C</div>
-              <div><div class="zttl">知识星球</div><div class="zsub">长按扫码领取优惠 ›</div></div>
-            </div>
-            <div class="zsxq-qr">
-              <img src="assets/qr-zsxq-coupon.png" alt="扫码领取新人优惠券" loading="lazy">
-            </div>
+        <div class="coupon-img-wrap reveal">
+          <img class="coupon-img" src="assets/coupon-zsxq-original.png" alt="全球宏观投研交易 星球新人优惠券 立减 ¥${COUPON}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
+          <div class="coupon-fallback" style="display:none">
+            <div class="cb-left"><span class="cb-tag">立减</span><div class="cb-amt"><span class="cb-yo">¥</span><span class="cb-v">${COUPON}</span></div></div>
+            <div class="cb-right"><div class="cb-title">新人立减券</div><div class="cb-exp">${COUPON_EXPIRE} 后失效<br>首年订阅可用 · 每人 1 张</div></div>
           </div>
         </div>
         <div class="wxcard glass reveal">
           <div class="w-head"><div class="w-logo">微</div><div class="wt">添加客服微信</div></div>
-          <img class="wq" src="assets/qr-wechat-official.png" alt="微信客服二维码：扫码显示微信号" loading="lazy">
-          <div class="wdesc">微信扫一扫 · 复制微信号添加</div>
-          <div class="wd"><strong style="color:#e94560;font-size:14px">macroficc</strong><br>或直接搜索上方微信号<br>获取最新加入通道与定价</div>
+          <img class="wq" src="assets/qr-wechat-official.png" alt="微信客服官方二维码" loading="lazy">
+          <div class="wdesc">微信扫一扫 · 长按识别添加</div>
+          <div class="wd"><strong style="color:#e94560;font-size:14px">macroficc</strong><br>搜索微信号或直接扫码<br>获取最新加入通道与定价</div>
         </div>
       </div>
     </section>
