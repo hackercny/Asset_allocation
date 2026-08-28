@@ -1,4 +1,4 @@
-import json, urllib.request, urllib.parse, os, sys, time
+import json, urllib.request, urllib.parse, os, sys
 
 QID = "FVWmROVvhgjRPC-4jAUh8A"
 LIST_ID = "1812649718805385482"
@@ -70,6 +70,9 @@ def main():
                 json.dump({"error": "status " + str(status), "head": body[:300]}, f)
             return
         data = json.loads(body)
+        if page == 0:
+            with open("data/raw.json", "w") as f:
+                f.write(body[:200000])
         tl = data.get("data", {}).get("listLatestTweetsTimeline", {})
         insts = tl.get("timeline", {}).get("instructions", [])
         got = 0
@@ -85,11 +88,14 @@ def main():
                             got += 1
                 elif c.get("entryType") == "TimelineTimelineCursor" and c.get("cursorType") == "Bottom":
                     cursor = c.get("value")
+        if page == 0:
+            print("TOP KEYS:", list(data.keys()))
+            print("TL KEYS:", list(tl.keys()) if isinstance(tl, dict) else tl)
         print(f"page {page}: +{got} tweets, cursor={'yes' if cursor else 'none'}")
         if not cursor or got == 0:
             break
     with open("data/tweets.json", "w") as f:
-        json.dump({"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "count": len(all_tweets), "tweets": list(all_tweets.values())}, f, ensure_ascii=False, indent=1)
+        json.dump({"fetched_at": __import__("time").strftime("%Y-%m-%dT%H:%M:%SZ", __import__("time").gmtime()), "count": len(all_tweets), "tweets": list(all_tweets.values())}, f, ensure_ascii=False, indent=1)
     print("TOTAL:", len(all_tweets))
 
 if __name__ == "__main__":
