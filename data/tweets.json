@@ -1,13 +1,13 @@
 {
- "fetched_at": "2026-08-28T10:11:05Z",
- "count": 39,
+ "fetched_at": "2026-08-28T10:13:06Z",
+ "count": 40,
  "tweets": [
   {
    "id": "2093279305564623036",
    "at": "Fri Aug 28 10:07:32 +0000 2026",
    "txt": "Moving up. https://t.co/JLaVoIj3pZ",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQzSa21aEAAfV6w.jpg"
    ],
@@ -17,8 +17,8 @@
    "id": "2093277419947835836",
    "at": "Fri Aug 28 10:00:02 +0000 2026",
    "txt": "The rebound leaves lithium running ahead of even freshly upgraded forecasts. BMI, a unit of Fitch Solutions, has lifted its 2026 average price forecast for Chinese lithium carbonate to $20,100 a tonne, nearly double last year’s average of $10,502, and its lithium hydroxide",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787911202
   },
@@ -26,19 +26,28 @@
    "id": "2093277350213361936",
    "at": "Fri Aug 28 09:59:46 +0000 2026",
    "txt": "Lithium price: BMI raises forecast, warns rally has outrun fundamentals ⚠️🔋\nhttps://t.co/Ptdpy2LCod https://t.co/TEym6GhwNY",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [
     "https://pbs.twimg.com/media/HQzQnT2WIAAp-ME.jpg"
    ],
    "ts": 1787911186
   },
   {
+   "id": "2093277145023824244",
+   "at": "Fri Aug 28 09:58:57 +0000 2026",
+   "txt": "Zinc is hot\n*Zinc ($3,933/t) – Zinc hits a four-year high as LME stocks keep falling",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
+   "ph": [],
+   "ts": 1787911137
+  },
+  {
    "id": "2093277043488067704",
    "at": "Fri Aug 28 09:58:33 +0000 2026",
    "txt": "Sweden’s Boliden (STO: BOL) has agreed to buy Brazilian conglomerate Votorantim’s controlling stake in Nexa Resources (NYSE: NEXA) for $1.3 billion in shares, giving the European miner a major zinc and silver platform in Latin America.\n\nBoliden will acquire Votorantim’s 65% stake",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787911113
   },
@@ -46,8 +55,8 @@
    "id": "2093276976677110188",
    "at": "Fri Aug 28 09:58:17 +0000 2026",
    "txt": "More Mining M&amp;A ⚡️\nBoliden’s $1.3B Nexa buy adds South American zinc, silver\nhttps://t.co/BMLJkHgqoU",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787911097
   },
@@ -55,8 +64,8 @@
    "id": "2093275154830721195",
    "at": "Fri Aug 28 09:51:02 +0000 2026",
    "txt": "Excellent, I'm holding the 15X leveraged oiler.👍",
-   "user": "",
-   "uname": "",
+   "user": "GoldForecast",
+   "uname": "Correlation Economics",
    "ph": [],
    "ts": 1787910662
   },
@@ -64,8 +73,8 @@
    "id": "2093272620317765710",
    "at": "Fri Aug 28 09:40:58 +0000 2026",
    "txt": "Source: China's General Administration of Customs",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787910058
   },
@@ -73,8 +82,8 @@
    "id": "2093272526717603894",
    "at": "Fri Aug 28 09:40:36 +0000 2026",
    "txt": "This is not a great picture for the Western world. 👀\nChinese exports of dual-use rare earths by destintation 🇨🇳 https://t.co/GdxK8l7amH",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [
     "https://pbs.twimg.com/media/HQzMEWbWIAArKZz.png"
    ],
@@ -84,8 +93,8 @@
    "id": "2093271280493477963",
    "at": "Fri Aug 28 09:35:39 +0000 2026",
    "txt": "$SILJ vs. Silver: Trying.. https://t.co/leKZ80Cain",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [
     "https://pbs.twimg.com/media/HQzLDpiXwAAM2PA.png"
    ],
@@ -95,8 +104,8 @@
    "id": "2093271098599039266",
    "at": "Fri Aug 28 09:34:55 +0000 2026",
    "txt": "Relative Strength: Silver Miners are also attempting to break out against Silver in August 2026 👇 https://t.co/sBaHJrz3xx",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [
     "https://pbs.twimg.com/media/HQzK2yoXwAATB5Q.png"
    ],
@@ -106,8 +115,8 @@
    "id": "2093270421546140016",
    "at": "Fri Aug 28 09:32:14 +0000 2026",
    "txt": "Mineral Resources (ASX: MIN) is looking to expand beyond Australia and diversify into copper after posting a record profit thanks to buoyant iron ore and lithium prices.\n\nAll the Perth-based miner’s assets are currently in Western Australia, but its next stage of growth is",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787909534
   },
@@ -115,8 +124,8 @@
    "id": "2093270356844745208",
    "at": "Fri Aug 28 09:31:58 +0000 2026",
    "txt": "Interesting. Copper is certainly very hot 🙂\nMinRes plans move into copper after record profit 🇦🇺\nhttps://t.co/ljseGWLUUK https://t.co/ZvmfAEzskv",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [
     "https://pbs.twimg.com/media/HQzKSvpXUAAbICR.png"
    ],
@@ -126,8 +135,8 @@
    "id": "2093256531772903702",
    "at": "Fri Aug 28 08:37:02 +0000 2026",
    "txt": "Most important indicator today is the Gold Silver Ratio, which is dropping on a fundamental basis.\n\nBoth gold and silver will rise now. https://t.co/9weBBTK1OV",
-   "user": "",
-   "uname": "",
+   "user": "GoldForecast",
+   "uname": "Correlation Economics",
    "ph": [
     "https://pbs.twimg.com/media/HQy9lovXEAA6w-b.jpg"
    ],
@@ -137,8 +146,8 @@
    "id": "2093255471637405878",
    "at": "Fri Aug 28 08:32:49 +0000 2026",
    "txt": "The COMEX copper accumulation is still ongoing. https://t.co/XrAtjaVjjn",
-   "user": "",
-   "uname": "",
+   "user": "GoldForecast",
+   "uname": "Correlation Economics",
    "ph": [
     "https://pbs.twimg.com/media/HQy8tySXIAAw1v_.png"
    ],
@@ -148,8 +157,8 @@
    "id": "2093251979342684527",
    "at": "Fri Aug 28 08:18:57 +0000 2026",
    "txt": "https://t.co/eKQVGIFUNc",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [],
    "ts": 1787905137
   },
@@ -157,8 +166,8 @@
    "id": "2093251898174493175",
    "at": "Fri Aug 28 08:18:37 +0000 2026",
    "txt": "Silver ETFs in India just took a hit, but the underlying inventory story is even more interesting.\n💣The Trigger: Rumors of an Indian import duty cut sent domestic silver ETFs dropping 1.6% today.\n🔐The Vault: MCX silver stocks have roared back from the 111t to 211 tons. https://t.co/kcI2kDMVqj",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [
     "https://pbs.twimg.com/media/HQy5gBdaIAEPrPs.jpg"
    ],
@@ -168,8 +177,8 @@
    "id": "2093247578431525362",
    "at": "Fri Aug 28 08:01:28 +0000 2026",
    "txt": "🇨🇳 WEEKLY CHINA VAULT UPDATE 🇨🇳\n🔑Combined SGE + SHFE holdings sit at 2,235.7 tons (71.88 Moz)\n🟢 SGE Vaults: +32.6 t (+4.11%) over the week to 825.7 t 🔴 SHFE Vaults: -6.9 t (-0.49%) daily to 1,410 t \n📊 Weekly net inflow: +14.7 t (+0.47 Moz) https://t.co/0m4pWKGtjm",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [
     "https://pbs.twimg.com/media/HQy1MjCaUAA7xvM.jpg"
    ],
@@ -179,8 +188,8 @@
    "id": "2093245182456029464",
    "at": "Fri Aug 28 07:51:56 +0000 2026",
    "txt": "RT @IGWTreport: The bottleneck sits downstream at the refinery, so a new mine does not move it.\n\nChile, Peru and DR Congo mine half the wor…",
-   "user": "",
-   "uname": "",
+   "user": "MiningVisuals",
+   "uname": "MiningVisuals",
    "ph": [],
    "ts": 1787903516
   },
@@ -188,8 +197,8 @@
    "id": "2093237343880691897",
    "at": "Fri Aug 28 07:20:47 +0000 2026",
    "txt": "The Shanghai silver premium is not budging, silver goes 👆. https://t.co/cahyrLC1Ae",
-   "user": "",
-   "uname": "",
+   "user": "GoldForecast",
+   "uname": "Correlation Economics",
    "ph": [
     "https://pbs.twimg.com/media/HQysNW_WMAA4rI-.png"
    ],
@@ -199,8 +208,8 @@
    "id": "2093236434090004886",
    "at": "Fri Aug 28 07:17:10 +0000 2026",
    "txt": "https://t.co/i3KmuweTUi",
-   "user": "",
-   "uname": "",
+   "user": "graddhybpc",
+   "uname": "Graddhy - Commodities TA+Cycles",
    "ph": [
     "https://pbs.twimg.com/media/HQyrcMsXcAAuhDs.png"
    ],
@@ -210,8 +219,8 @@
    "id": "2093229121220600084",
    "at": "Fri Aug 28 06:48:07 +0000 2026",
    "txt": "GSR P/O\n\nBoth AU/AG at their bottom of the swing &amp; due to cycle up? https://t.co/mnYGjGFCyH",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQykh9kWYAAN34D.png"
    ],
@@ -221,8 +230,8 @@
    "id": "2093228633179693417",
    "at": "Fri Aug 28 06:46:11 +0000 2026",
    "txt": "CME Gold Futures\n\nOctober &amp; December https://t.co/Wd1Wlu7srI",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQykQklWoAA85oH.png",
     "https://pbs.twimg.com/media/HQykV5xWwAEZR-K.png"
@@ -233,8 +242,8 @@
    "id": "2093228285404852726",
    "at": "Fri Aug 28 06:44:48 +0000 2026",
    "txt": "Rolling over into the DEC contract https://t.co/W8R4resNPq",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQyj2eDa0AIJpvu.png",
     "https://pbs.twimg.com/media/HQyj-ksXkAARxS3.png"
@@ -245,8 +254,8 @@
    "id": "2093226576158810476",
    "at": "Fri Aug 28 06:38:00 +0000 2026",
    "txt": "https://t.co/p3xM6lR6pd https://t.co/VQcoOol21G",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQyieFOb0AAeM3S.jpg"
    ],
@@ -256,8 +265,8 @@
    "id": "2093195857437008124",
    "at": "Fri Aug 28 04:35:56 +0000 2026",
    "txt": "CME August Gold/Silver Deliveries\n\nA quite month on both metals. https://t.co/9PJpNP9RwX",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQyGUWUboAAHo2J.jpg",
     "https://pbs.twimg.com/media/HQyGVQxbEAE1CRz.jpg",
@@ -270,8 +279,8 @@
    "id": "2093191674117943555",
    "at": "Fri Aug 28 04:19:19 +0000 2026",
    "txt": "SHFE Future Contracts Spreads\n\nSGE Premiums https://t.co/PLgUX0m9j0",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQyCtOkbUAAyYn5.jpg",
     "https://pbs.twimg.com/media/HQyCt5Lb0AECDu4.jpg",
@@ -283,8 +292,8 @@
    "id": "2093186050701021633",
    "at": "Fri Aug 28 03:56:58 +0000 2026",
    "txt": "Weekly silver drilling highlights https://t.co/muK0HEhZQg",
-   "user": "",
-   "uname": "",
+   "user": "MinerDeck",
+   "uname": "MinerDeck",
    "ph": [
     "https://pbs.twimg.com/media/HQx9UsAWkAA9m73.jpg"
    ],
@@ -294,8 +303,8 @@
    "id": "2093180386075680774",
    "at": "Fri Aug 28 03:34:28 +0000 2026",
    "txt": "🚨The debasement trade is back. \n⚡️When search interest for \"debasement trade\" spikes, non-fiat assets pay attention.\n⚡️Both Gold ($GLD) and Bitcoin ($IBIT) are catching a bid again as concerns over soaring national debt &amp; runaway fiscal deficits heat back up https://t.co/3RVtjHAWeo",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [
     "https://pbs.twimg.com/media/HQx4PK9bwAAmoEv.jpg"
    ],
@@ -305,8 +314,8 @@
    "id": "2093170472666169535",
    "at": "Fri Aug 28 02:55:04 +0000 2026",
    "txt": "Good morning China! 🌅 #Preciousmetals premiums  🥇Gold (Au(T+D)) is trading flat to LBMA at $4,584.68/oz\n🥈Silver (Ag(T+D)) premium continues to rise trading at +12.9% to LBMA at $77.73/oz https://t.co/4AzuvJg8mc",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [
     "https://pbs.twimg.com/media/HQxvQ2fa4AAcZ4l.jpg"
    ],
@@ -316,8 +325,8 @@
    "id": "2093092168844050934",
    "at": "Thu Aug 27 21:43:55 +0000 2026",
    "txt": "CME December $20,000 Call Options\n\nThe top end is now stalling with no growth. https://t.co/yxIr8mXgHX",
-   "user": "",
-   "uname": "",
+   "user": "GoldFishCharts",
+   "uname": "GoldFish Charts",
    "ph": [
     "https://pbs.twimg.com/media/HQwoOumasAAPRfo.jpg"
    ],
@@ -327,8 +336,8 @@
    "id": "2093066869330579555",
    "at": "Thu Aug 27 20:03:23 +0000 2026",
    "txt": "https://t.co/17VRp8iM6Q",
-   "user": "",
-   "uname": "",
+   "user": "JanGold_",
+   "uname": "Jan Nieuwenhuijs",
    "ph": [
     "https://pbs.twimg.com/media/HQwROU-XMAAXe78.jpg"
    ],
@@ -338,8 +347,8 @@
    "id": "2093019721163481241",
    "at": "Thu Aug 27 16:56:02 +0000 2026",
    "txt": "Gold 😂",
-   "user": "",
-   "uname": "",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
    "ph": [],
    "ts": 1787849762
   },
@@ -347,8 +356,8 @@
    "id": "2093003712725676494",
    "at": "Thu Aug 27 15:52:25 +0000 2026",
    "txt": "RT @tb_burnette: HSBC’s latest affluent investor survey points to growing appetite for #gold. Nearly 9/10 investors plan to maintain or inc…",
-   "user": "",
-   "uname": "",
+   "user": "KrishanGopaul",
+   "uname": "Krishan Gopaul",
    "ph": [],
    "ts": 1787845945
   },
@@ -356,8 +365,8 @@
    "id": "2092990530573525332",
    "at": "Thu Aug 27 15:00:03 +0000 2026",
    "txt": "I saw the light once I understood the concept of discount rate and net present value. The world changed. Suddenly, I knew which companies were undervalued and which companies were overvalued. All I had to do was look at as many companies as possible and pick the best ones to buy.",
-   "user": "",
-   "uname": "",
+   "user": "GoldForecast",
+   "uname": "Correlation Economics",
    "ph": [],
    "ts": 1787842803
   },
@@ -365,8 +374,8 @@
    "id": "2092955111777538401",
    "at": "Thu Aug 27 12:39:18 +0000 2026",
    "txt": "Socialist when the economy heals:",
-   "user": "",
-   "uname": "",
+   "user": "JanGold_",
+   "uname": "Jan Nieuwenhuijs",
    "ph": [],
    "ts": 1787834358
   },
@@ -374,8 +383,8 @@
    "id": "2092952766943502370",
    "at": "Thu Aug 27 12:29:59 +0000 2026",
    "txt": "The banks have opened positions https://t.co/vOckETd8TZ",
-   "user": "",
-   "uname": "",
+   "user": "JanGold_",
+   "uname": "Jan Nieuwenhuijs",
    "ph": [
     "https://pbs.twimg.com/media/HQupVP3X0AAlY51.jpg"
    ],
@@ -385,8 +394,8 @@
    "id": "2092936001207316877",
    "at": "Thu Aug 27 11:23:22 +0000 2026",
    "txt": "Energy transition minerals: top 3 countries in mining &amp; refining 📊\n\nFor most of these minerals, three countries account for the majority of supply, and the share is higher at the refining stage:\n\n🔋 Graphite 99%\n⚡ Lithium 95%\n🧲 Rare earths 94%\n\nA new mine doesn't change much https://t.co/2wyQsWrsxd",
-   "user": "",
-   "uname": "",
+   "user": "MiningVisuals",
+   "uname": "MiningVisuals",
    "ph": [
     "https://pbs.twimg.com/media/HQuYd3WWAAA1ASq.jpg"
    ],
@@ -396,8 +405,8 @@
    "id": "2092916124564549881",
    "at": "Thu Aug 27 10:04:23 +0000 2026",
    "txt": "@pmbug",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [],
    "ts": 1787825063
   },
@@ -405,8 +414,8 @@
    "id": "2092916075931607117",
    "at": "Thu Aug 27 10:04:11 +0000 2026",
    "txt": "🚨Global silver vaults are up +100 tons WTD, putting total combined holdings at 41,181t (1.324 B oz) across 5 major exchanges:\n🇬🇧 LBMA London: 28,212.7t\n🇺🇸 COMEX: 10,521.0t \n🇨🇳 China (SHFE/SGE): 2,242.5t\n🇮🇳 India (MCX): 204.3t\n📊LBMA estimated free float: 6,822.6t (219.35M oz) https://t.co/4ylfHdOjRk",
-   "user": "",
-   "uname": "",
+   "user": "InProved_Metals",
+   "uname": "🇭 🇺 🇬 🇴",
    "ph": [
     "https://pbs.twimg.com/media/HQuH0xobIAALGHm.jpg"
    ],
