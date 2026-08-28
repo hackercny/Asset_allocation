@@ -1,713 +1,649 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="dark">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#1a1a2e" />
-<title>全球宏观投研交易 | 连接机构级投研能力与个人交易者的桥梁</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="知识星球社群：个人投资者的财商提升与财务自由之路；机构与FICC从业者的全球宏观投研交易。">
+<title>知识星球社群入口 · 财商提升 / 全球宏观投研交易</title>
 <style>
-/* ============ RESET ============ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",system-ui,-apple-system,sans-serif;overflow-x:hidden;line-height:1.5;color:#fff;background:#1a1a2e}
-:root{--inst-900:#1a1a2e;--inst-800:#16213e;--retail-900:#0f3460;--retail-accent:#e94560;--retail-gold:#f5c542;--txt:#fff;--txt-dim:#94a3b8;--bg:#fff;--bg-dark:#1a1a2e;--glass-bg:rgba(255,255,255,.08);--glass-border:rgba(255,255,255,.14);--card:#fff}
-html.dark{--txt:#fff;--bg:#1a1a2e;--glass-bg:rgba(255,255,255,.08);--glass-border:rgba(255,255,255,.14);--card:rgba(255,255,255,.05);--txt-dim:#94a3b8}
-html:not(.dark){--txt:#1a1a2e;--bg:#f8fafc;--glass-bg:rgba(255,255,255,.7);--glass-border:rgba(15,52,96,.12);--card:#fff;--txt-dim:#64748b}
-.num{font-family:"Roboto Mono","DIN Alternate","SF Mono",monospace;font-variant-numeric:tabular-nums}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input,textarea{font-family:inherit}
-img{max-width:100%;display:block}
+/* ============ BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'PingFang SC','Microsoft YaHei','Helvetica Neue',Arial,sans-serif;color:#0f172a;background:#fff;line-height:1.6;overflow-x:hidden}
+img{max-width:100%}
 a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.num{font-variant-numeric:tabular-nums}
+.container{max-width:1080px;margin:0 auto;padding:0 20px}
+.sec{padding:64px 0}
+.sec-title{font-size:26px;font-weight:800;text-align:center;letter-spacing:.01em}
+.sec-sub{text-align:center;color:#64748b;margin-top:8px;font-size:14px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-/* ============ LAYOUT ============ */
-.glass{background:var(--glass-bg);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border:1px solid var(--glass-border)}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-.hide-scroll::-webkit-scrollbar{display:none}.hide-scroll{-ms-overflow-style:none;scrollbar-width:none}
-.gold-text{background:linear-gradient(120deg,#f5c542,#e9b416,#fbd978,#f5c542);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shimmer 3s linear infinite}
-.grid-bg{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
-html:not(.dark) .grid-bg{background-image:linear-gradient(rgba(15,52,96,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,52,96,.04) 1px,transparent 1px)}
+/* ============ HEADER ============ */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(255,255,255,.88);border-bottom:1px solid rgba(15,23,42,.07)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;letter-spacing:.02em}
+.brand .logo{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#1a237e,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
+nav{display:flex;gap:6px}
+nav a{padding:8px 14px;border-radius:10px;font-size:14px;font-weight:600;color:#475569;transition:.2s}
+nav a:hover{background:rgba(15,23,42,.05);color:#0f172a}
+nav a.on{background:rgba(26,35,126,.08);color:#1a237e}
+body.t-inst header{background:rgba(15,23,42,.88);border-bottom:1px solid rgba(148,163,184,.14)}
+body.t-inst .brand{color:#f1f5f9}
+body.t-inst .brand .logo{background:linear-gradient(135deg,#3b82f6,#10b981)}
+body.t-inst nav a{color:#94a3b8}
+body.t-inst nav a:hover{background:rgba(148,163,184,.1);color:#e2e8f0}
+body.t-inst nav a.on{background:rgba(59,130,246,.15);color:#60a5fa}
+@media(max-width:560px){nav a{padding:7px 8px;font-size:12.5px}.brand span.bname{display:none}}
 
-/* ============ ANIM ============ */
-@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-@keyframes fadeUp{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes slideIn{0%{opacity:0;transform:translateX(40px)}100%{opacity:1;transform:translateX(0)}}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes ping{0%{transform:scale(1);opacity:1}75%,100%{transform:scale(2);opacity:0}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.fade-up{animation:fadeUp .6s ease forwards;opacity:0}
-.float-anim{animation:float 6s ease-in-out infinite}
-.card-hover{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
-.card-hover:hover{transform:translateY(-8px)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
-.reveal.in{opacity:1;transform:translateY(0)}
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;transition:.25s;border:none}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(135deg,#c9a227,#e0bd4f);color:#fff;box-shadow:0 10px 28px rgba(201,162,39,.38)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(201,162,39,.5)}
+.btn-blue{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;box-shadow:0 10px 28px rgba(59,130,246,.35)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(59,130,246,.5)}
+.btn-ghost{background:transparent;color:#334155;border:1.5px solid rgba(51,65,85,.3)}
+.btn-ghost:hover{border-color:#1a237e;color:#1a237e;background:rgba(26,35,126,.04)}
+.btn-ghost-l{background:rgba(255,255,255,.08);color:#e2e8f0;border:1.5px solid rgba(226,232,240,.3);backdrop-filter:blur(4px)}
+.btn-ghost-l:hover{border-color:#60a5fa;color:#93c5fd}
 
-/* page transition */
-.page{animation:pageIn .5s cubic-bezier(.22,1,.36,1) forwards}
-@keyframes pageIn{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
+/* ============ HOME ============ */
+.hero-home{position:relative;overflow:hidden;padding:88px 0 64px;text-align:center;background:radial-gradient(900px 480px at 85% -10%,rgba(201,162,39,.16),transparent 60%),radial-gradient(700px 420px at -5% 110%,rgba(59,130,246,.14),transparent 60%),linear-gradient(165deg,#f8fafc 0%,#eef2ff 100%)}
+.hero-home::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(26,35,126,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(26,35,126,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%)}
+.hero-home .container{position:relative}
+.hero-home h1{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:.01em}
+.hero-home h1 .em{background:linear-gradient(135deg,#c9a227,#a97f10);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-home p{color:#475569;margin-top:14px;font-size:15px}
+.dual{display:grid;grid-template-columns:1fr;gap:18px;max-width:860px;margin:44px auto 0;width:100%}
+@media(min-width:768px){.dual{grid-template-columns:1fr 1fr}}
+.dcard{position:relative;display:block;text-align:left;padding:30px 28px;border-radius:20px;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 6px 24px rgba(15,23,42,.06);transition:.3s;overflow:hidden}
+.dcard:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(15,23,42,.14)}
+.dcard .k{font-size:12px;font-weight:700;letter-spacing:.1em;color:#94a3b8;margin-bottom:10px}
+.dcard h3{font-size:21px;font-weight:800;margin-bottom:8px}
+.dcard p{color:#64748b;font-size:13.5px;line-height:1.7;margin:0}
+.dcard .go{margin-top:16px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700}
+.dcard.retail{border-top:4px solid #c9a227}
+.dcard.retail .go{color:#a97f10}
+.dcard.inst{border-top:4px solid #3b82f6}
+.dcard.inst .go{color:#2563eb}
+.dcard.inst{background:linear-gradient(160deg,#0f172a,#16213e);border-color:rgba(59,130,246,.25)}
+.dcard.inst h3{color:#f1f5f9}
+.dcard.inst p{color:#94a3b8}
+.dcard.inst .go{color:#60a5fa}
+.home-note{margin-top:34px;color:#94a3b8;font-size:12.5px}
 
-/* flip card */
-.flip{perspective:1400px}
-.flip-inner{position:relative;transition:transform .7s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
-.flip.flipped .flip-inner{transform:rotateY(180deg)}
-.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.flip-back{position:absolute;inset:0;transform:rotateY(180deg)}
+/* ============ RETAIL PAGE ============ */
+.hero-retail{position:relative;overflow:hidden;color:#fff;text-align:center;padding:92px 0 72px;background:radial-gradient(1100px 560px at 82% -12%,rgba(201,162,39,.28),transparent 58%),radial-gradient(880px 520px at -8% 112%,rgba(59,130,246,.22),transparent 60%),linear-gradient(160deg,#1a237e 0%,#111a54 55%,#0d1442 100%)}
+.hero-retail::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 40%,black 20%,transparent 78%)}
+.hero-retail .container{position:relative}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:999px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(4px);letter-spacing:.05em}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:#c9a227;box-shadow:0 0 10px #c9a227}
+.hero-retail h1{font-size:38px;font-weight:800;line-height:1.32;margin-top:22px;letter-spacing:.01em}
+.hero-retail h1 .gold{background:linear-gradient(135deg,#f3d479,#c9a227);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-retail .sub{margin-top:16px;color:rgba(255,255,255,.82);font-size:15.5px;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.r-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:640px;margin:46px auto 0}
+.r-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px 10px;backdrop-filter:blur(6px)}
+.r-stat .v{font-size:24px;font-weight:800;color:#f3d479}
+.r-stat .l{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+@media(max-width:560px){.hero-retail h1{font-size:28px}.r-stats{grid-template-columns:1fr 1fr}}
 
-/* tool tip */
-.tool{position:relative}
-.tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%) translateY(6px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;white-space:nowrap;z-index:20}
-.tool:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.b-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:38px}
+.b-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:18px;padding:28px 24px;transition:.3s;position:relative}
+.b-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(26,35,126,.12);border-color:rgba(201,162,39,.4)}
+.b-card .ico{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(26,35,126,.08),rgba(201,162,39,.12));color:#1a237e;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.b-card h4{font-size:16.5px;font-weight:800;margin-bottom:8px;color:#111a54}
+.b-card p{font-size:13px;color:#64748b;line-height:1.75}
+.b-card .idx{position:absolute;top:18px;right:20px;font-size:26px;font-weight:800;color:rgba(26,35,126,.08)}
 
-/* ============ TOP BAR ============ */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:center;gap:8px;padding:7px 16px;font-size:12px;color:#fff;background:linear-gradient(90deg,#0f3460,#16213e,#0f3460)}
-.topbar .dot{width:7px;height:7px;border-radius:50%;background:var(--retail-accent);position:relative}
-.topbar .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--retail-accent);animation:ping 1.6s ease-in-out infinite}
-.topbar .close{margin-left:6px;color:rgba(255,255,255,.6);font-size:16px;line-height:1}
+.who-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+.who{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:999px;padding:10px 20px;font-size:13.5px;font-weight:600;color:#334155;box-shadow:0 3px 12px rgba(15,23,42,.04);transition:.25s}
+.who:hover{border-color:rgba(201,162,39,.5);transform:translateY(-2px)}
+.who .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;background:linear-gradient(135deg,#fdf3d3,#f3e3ab)}
+.trust{background:linear-gradient(165deg,#f8fafc,#eef2ff)}
+.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:26px}
+.trust-pill{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:12px;padding:12px 20px;font-size:13.5px}
+.trust-pill b{font-size:19px;color:#a97f10}
+.trust-pill .ic{color:#c9a227}
+.rev-wrap{max-width:660px;margin:38px auto 0}
+.rev{display:none;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:18px;padding:30px 30px;box-shadow:0 8px 28px rgba(15,23,42,.06)}
+.rev.on{display:block;animation:fadeUp .55s cubic-bezier(.2,.7,.3,1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rev .q{font-size:15px;color:#1e293b;line-height:1.9}
+.rev .q::before{content:'“';font-size:30px;color:#c9a227;font-weight:800;line-height:0;margin-right:4px;vertical-align:-8px}
+.rev .who-s{margin-top:16px;display:flex;align-items:center;gap:10px;font-size:12.5px;color:#64748b}
+.rev .who-s .av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#fdf3d3,#f3e3ab);display:flex;align-items:center;justify-content:center;font-size:14px}
+.rev-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.rev-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(26,35,126,.18);cursor:pointer;transition:.25s;padding:0}
+.rev-dots button.on{background:#c9a227;width:26px;border-radius:5px}
 
-/* ============ NAV ============ */
-.nav{position:fixed;top:36px;left:50%;transform:translateX(-50%);z-index:55}
-@media(min-width:768px){.nav{top:10px}}
-.nav-pills{display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px}
-.nav-pills button{padding:6px 16px;border-radius:999px;font-size:13px;font-weight:500;color:var(--txt-dim);transition:.25s}
-html:not(.dark) .nav-pills button{color:#475569}
-.nav-pills button.on{color:#1a1a2e;background:linear-gradient(90deg,#f5c542,#e9b416)}
-.nav-pills .theme{width:28px;height:28px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-left:4px}
+.price-card{max-width:520px;margin:38px auto 0;background:linear-gradient(160deg,#111a54,#1a237e);border-radius:22px;padding:38px 32px;color:#fff;text-align:center;box-shadow:0 24px 54px rgba(26,35,126,.32);position:relative;overflow:hidden}
+.price-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.25),transparent 70%)}
+.price-card .pl{font-size:13px;color:rgba(255,255,255,.75);letter-spacing:.08em}
+.price-card .pv{font-size:52px;font-weight:800;margin:8px 0 2px}
+.price-card .pv .c{font-size:22px;vertical-align:14px;font-weight:700}
+.price-card .pv .y{font-size:15px;color:rgba(255,255,255,.65);font-weight:400}
+.price-card .off{display:inline-block;margin-top:10px;padding:6px 16px;border-radius:999px;background:rgba(201,162,39,.16);border:1px solid rgba(201,162,39,.45);color:#f3d479;font-size:13px;font-weight:600}
+.price-card .list{margin:22px 0 26px;text-align:left;display:inline-block}
+.price-card .list li{list-style:none;font-size:13.5px;color:rgba(255,255,255,.85);padding:5px 0;display:flex;align-items:center;gap:8px}
+.price-card .list .ck{color:#f3d479;flex-shrink:0}
 
-/* ============ HERO ============ */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:var(--inst-900);padding:90px 0 40px}
-html:not(.dark) .hero{background:#f1f5f9}
-.hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
-html:not(.dark) .hero-canvas{opacity:.5}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.hero .hero-img{opacity:.5}
-html:not(.dark) .hero .hero-img{opacity:.25}
-.retail-hero .hero-img{opacity:.4}
-.hero-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent,transparent 40%,var(--inst-900));pointer-events:none}
-html:not(.dark) .hero-fade{background:linear-gradient(to bottom,transparent,transparent 40%,#f1f5f9)}
-.hero-inner{position:relative;z-index:10;width:100%;max-width:1100px;margin:0 auto;padding:0 20px;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:12px;color:#cbd5e1;margin-bottom:22px}
-html:not(.dark) .badge{color:#475569}
-h1{font-size:clamp(32px,8vw,68px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0}
-h1 .accent{display:block}
-.hero-sub{margin:18px auto 0;max-width:600px;font-size:clamp(14px,3.6vw,20px);color:#cbd5e1}
-html:not(.dark) .hero-sub{color:#475569}
-.dual{display:grid;grid-template-columns:1fr;gap:16px;margin:42px auto 0;max-width:820px;width:100%}
-@media(min-width:768px){.dual{grid-template-columns:1fr 1fr;gap:22px}}
-.dual .card{position:relative;text-align:left;border-radius:24px;padding:28px;overflow:hidden;transition:transform .35s,box-shadow .35s}
-.dual .card:hover{transform:translateY(-8px)}
-.dual .inst-card{background:linear-gradient(145deg,#1a1a2e,#16213e);color:#fff}
-.dual .retail-card{background:linear-gradient(145deg,#0f3460,#1a4a7a);border:1px solid rgba(245,197,66,.3);color:#fff}
-.recommend{position:absolute;top:14px;right:16px;font-size:10px;font-weight:700;color:var(--retail-gold);background:rgba(245,197,66,.12);padding:2px 8px;border-radius:999px}
-.dual .glow{position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.05);filter:blur(40px)}
-.dual .retail-card .glow{background:rgba(245,197,66,.2)}
-.dual .ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.dual .inst-card .ico{background:rgba(255,255,255,.08);color:#cbd5e1}
-.dual .retail-card .ico{background:linear-gradient(135deg,#f5c542,#e9b416);color:#1a1a2e}
-.dual .kicker{font-size:12px;margin-bottom:4px}
-.dual .inst-card .kicker{color:#64748b}
-.dual .retail-card .kicker{color:var(--retail-gold)}
-.dual .card h3{font-size:22px;font-weight:800;margin:0 0 8px}
-.dual .card p{font-size:14px;color:#cbd5e1;line-height:1.6;margin:0}
-.dual .retail-card p{color:#e2e8f0}
-.dual .go{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-size:14px;color:#e2e8f0;transition:.25s}
-.dual .retail-card .go{color:var(--retail-gold)}
-.dual .card:hover .go{color:#fff}
-.dual .go svg{transition:transform .25s}
-.dual .card:hover .go svg{transform:translateX(4px)}
-
-/* trust */
-.trust{position:relative;z-index:10;width:100%;max-width:1100px;margin:0 auto;padding:0 20px;margin-top:54px}
-.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:768px){.metrics{grid-template-columns:repeat(4,1fr)}}
-.metric{border-radius:16px;padding:18px;text-align:center}
-.metric .v{font-size:clamp(26px,6vw,40px);font-weight:800;color:#fff}
-html:not(.dark) .metric .v{color:#1a1a2e}
-.metric .v .suf{color:var(--retail-gold)}
-.metric .l{font-size:12px;color:#94a3b8;margin-top:4px}
-html:not(.dark) .metric .l{color:#64748b}
-.marquee-wrap{overflow:hidden;padding:14px 0;margin-top:28px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
-html:not(.dark) .marquee-wrap{border-color:rgba(15,52,96,.1)}
-.marquee{display:flex;gap:24px;white-space:nowrap;animation:marquee 28s linear infinite;width:max-content}
-.marquee span{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#64748b}
-.marquee .d{width:6px;height:6px;border-radius:50%;background:var(--retail-accent)}
-
-/* ============ SECTION ============ */
-.section{padding:52px 0}
-.section h2{font-size:clamp(24px,5vw,38px);font-weight:800;letter-spacing:-.01em}
-html:not(.dark) h2,html:not(.dark) h3,html:not(.dark) h4{color:#1a1a2e}
-.eyebrow{font-size:13px;color:var(--retail-gold);margin-bottom:6px;font-weight:600}
-html:not(.dark) .eyebrow{color:#b8860b}
-.center{text-align:center}
-.sub{color:#94a3b8;font-size:14px;margin-top:8px}
-html:not(.dark) .sub{color:#64748b}
-
-/* institution */
-.inst-page{min-height:100vh;background:var(--inst-900);color:#fff;padding-top:24px}
-html:not(.dark) .inst-page{background:#f8fafc;color:#1a1a2e}
-.pains{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
-@media(min-width:768px){.pains{grid-template-columns:repeat(3,1fr)}}
-.pain{border-radius:16px;padding:24px}
-.pain .n{font-size:28px;color:rgba(245,197,66,.4);margin-bottom:10px}
-.pain h4{font-size:17px;font-weight:700;margin-bottom:8px}
-.pain p{font-size:13px;color:#94a3b8;line-height:1.7}
-html:not(.dark) .pain p{color:#64748b}
-.solutions{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
-@media(min-width:768px){.solutions{grid-template-columns:repeat(3,1fr)}}
-.sol{border-radius:16px;padding:24px;border:1px solid;background:linear-gradient(160deg,rgba(22,33,62,.6),rgba(26,26,46,.4))}
-html:not(.dark) .sol{background:#fff}
-.sol .ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.sol .layer{font-size:12px;margin-bottom:10px;font-weight:600}
-.sol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.sol li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#cbd5e1}
-html:not(.dark) .sol li{color:#334155}
-.diff{border-radius:24px;padding:36px;position:relative;overflow:hidden;background:linear-gradient(135deg,#16213e,#0f3460);margin-top:36px}
-html:not(.dark) .diff{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
-.diff .glow{position:absolute;top:0;right:0;width:240px;height:240px;border-radius:50%;background:rgba(245,197,66,.1);filter:blur(60px)}
-.diff h3{font-size:22px;font-weight:800;margin-bottom:18px}
-.diff .row{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:768px){.diff .row{grid-template-columns:1fr 1fr}}
-.diff .t{color:var(--retail-gold);font-weight:700;font-size:14px;margin-bottom:6px}
-.diff p{font-size:13px;color:#cbd5e1;line-height:1.7}
-html:not(.dark) .diff p{color:#475569}
-
-.pricing{display:grid;grid-template-columns:1fr;gap:30px;align-items:center;margin-top:36px}
-@media(min-width:768px){.pricing{grid-template-columns:1.1fr .9fr}}
-.pricing ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px}
-.pricing li{display:flex;align-items:center;gap:8px;font-size:14px;color:#cbd5e1}
-html:not(.dark) .pricing li{color:#334155}
-.form{border-radius:20px;padding:28px}
-.form h4{font-size:18px;font-weight:700;margin-bottom:14px}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:12px;color:#94a3b8;margin-bottom:6px}
-html:not(.dark) .field label{color:#64748b}
-.field input,.field textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 14px;font-size:14px;color:#fff;outline:none;transition:.25s;resize:none}
-html:not(.dark) .field input,html:not(.dark) .field textarea{background:#fff;border-color:#e2e8f0;color:#1a1a2e}
-.field input:focus,.field textarea:focus{border-color:rgba(245,197,66,.5)}
-.btn-gold{width:100%;padding:13px;border-radius:12px;font-weight:700;color:#1a1a2e;background:linear-gradient(90deg,#f5c542,#e9b416);transition:.2s}
-.btn-gold:hover{filter:brightness(1.08)}
-.form-ok{text-align:center;padding:40px 0}
-.form-ok .ico{width:64px;height:64px;border-radius:50%;background:rgba(245,197,66,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--retail-gold)}
-
-/* retail */
-.retail-page{min-height:100vh;color:#fff;background:linear-gradient(180deg,#0f3460,#0a2647);padding-top:24px}
-.retail-hero{position:relative;text-align:center;overflow:hidden;padding:60px 0 20px}
-.retail-hero .canvas{position:absolute;inset:0;opacity:.5}
-.retail-hero .inner{position:relative;z-index:2}
-.assets{display:flex;gap:14px;overflow-x:auto;padding-bottom:14px;margin:0 -20px;padding-left:20px;padding-right:20px;scroll-snap-type:x mandatory}
-.asset{flex:0 0 170px;scroll-snap-align:start;border-radius:16px;padding:16px;border:1px solid}
-.asset .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.asset .nm{font-size:17px;font-weight:700}
-.asset .tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px}
-.asset.long .tag{background:rgba(76,217,158,.15);color:#6ee7b7}
-.asset.short .tag{background:rgba(233,69,96,.15);color:#fca5a5}
-.asset .px{font-size:24px;font-weight:800}
-.asset .chg{font-size:12px;margin-top:2px}
-.asset.long .chg{color:#6ee7b7}.asset.short .chg{color:#fca5a5}
-.asset .note{font-size:10px;color:#94a3b8;margin-top:12px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1);line-height:1.5}
-.asset .full{font-size:9px;color:#64748b;margin-top:6px}
-
-.timeline{position:relative;margin-top:20px}
-.tl-line{position:absolute;left:14px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.1)}
-@media(min-width:768px){.tl-line{left:50%;transform:translateX(-50%)}}
-.tl-item{position:relative;display:flex;align-items:center;margin-bottom:28px}
-.tl-dot{position:absolute;left:14px;width:12px;height:12px;border-radius:50%;background:var(--retail-gold);box-shadow:0 0 0 5px rgba(245,197,66,.2);transform:translateX(-50%);z-index:2}
-@media(min-width:768px){.tl-dot{left:50%}}
-.tl-card{padding-left:40px;width:100%}
-@media(min-width:768px){.tl-card{width:50%;padding-left:0}.tl-item.left .tl-card{padding-right:48px;text-align:right}.tl-item.right{justify-content:flex-end}.tl-item.right .tl-card{padding-left:48px}}
-.tl-inner{border-radius:16px;padding:18px}
-.tl-stage{font-size:13px;font-weight:700;color:var(--retail-gold);margin-bottom:4px}
-.tl-card h4{font-size:15px;font-weight:700;margin-bottom:4px}
-.tl-card p{font-size:12px;color:#94a3b8;line-height:1.6}
-
-.calc{border-radius:24px;padding:32px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f3460,#16213e);margin-top:20px}
-html:not(.dark) .calc{background:linear-gradient(135deg,#1e3a8a,#1e40af)}
-.calc .glow{position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(245,197,66,.1);filter:blur(40px)}
-.calc-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;position:relative}
-@media(min-width:768px){.calc-grid{grid-template-columns:1fr 1fr}}
-.calc h3{font-size:22px;font-weight:800;margin-bottom:10px}
-.calc .desc{font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:18px}
-.calc-row{display:flex;align-items:center;gap:12px}
-.calc-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
-input[type=range]{flex:1;accent-color:var(--retail-gold)}
-.calc-inv{margin-top:14px;display:flex;align-items:baseline;gap:6px}
-.calc-inv .n{font-size:30px;font-weight:800;color:var(--retail-gold)}
-.calc-box{border-radius:16px;padding:22px}
-.calc-row2{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.calc-row2 .l{font-size:14px;color:#94a3b8}
-.calc-row2 .v{font-size:17px}
-.calc-row2 .strike{text-decoration:line-through;color:#64748b}
-.calc-final{border-top:1px solid rgba(255,255,255,.1);padding-top:12px;margin-top:4px;display:flex;justify-content:space-between;align-items:baseline}
-.calc-final .l{font-size:14px;color:#cbd5e1}
-.calc-final .v{font-size:32px;font-weight:800}
-.calc-free{margin-top:12px;text-align:center;font-size:12px;color:#6ee7b7}
-
-.flip{width:100%;max-width:400px;margin:0 auto;cursor:pointer}
-.flip-front,.flip-back{border-radius:24px;padding:30px;text-align:center;overflow:hidden}
-.flip-front{background:linear-gradient(160deg,#0f3460,#16213e);border:2px solid rgba(245,197,66,.3);position:relative}
-.flip-front .renew{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;color:var(--retail-gold);background:rgba(245,197,66,.15);padding:3px 8px;border-radius:999px}
-.flip-front .m{font-size:13px;color:#94a3b8;margin-bottom:8px}
-.flip-front .price{display:flex;align-items:baseline;justify-content:center;gap:4px}
-.flip-front .price .c{font-size:20px;color:#94a3b8}
-.flip-front .price .p{font-size:56px;font-weight:800}
-.flip-front .price .y{font-size:13px;color:#94a3b8}
-.flip-front .orig{font-size:12px;color:#64748b;text-decoration:line-through;margin-top:8px}
-.flip-front .hint{margin-top:22px;font-size:12px;color:#94a3b8}
-.cd{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
-.cd .t{font-size:10px;color:#64748b;margin-bottom:4px}
-.cd .n{font-size:18px;font-weight:800;color:var(--retail-accent)}
-.cd-bar{width:100%;height:6px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:8px}
-.cd-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#f5c542,#e94560)}
-.cd .s{font-size:9px;color:#64748b;margin-top:6px}
-.flip-back{background:linear-gradient(160deg,#16213e,#1a1a2e);border:2px solid rgba(245,197,66,.3)}
-.flip-back .t{font-size:13px;color:var(--retail-gold);font-weight:700;margin-bottom:14px}
-.flip-back ul{list-style:none;text-align:left;display:flex;flex-direction:column;gap:10px}
-.flip-back li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#e2e8f0}
-.flip-back .hint{margin-top:18px;text-align:center;font-size:12px;color:#94a3b8}
-
-.scan{border-radius:24px;padding:30px;text-align:center}
-.scan h3{font-size:20px;font-weight:800;margin-bottom:8px}
-.scan .d{font-size:14px;color:#94a3b8;margin-bottom:20px}
-.scan-qr{width:140px;height:140px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto}
-.scan-tip{margin-top:14px;font-size:12px;color:#94a3b8;line-height:1.8}
-
-/* ============ COUPON ============ */
-.coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch;margin-top:8px}
-@media(min-width:768px){.coupon-wrap{grid-template-columns:1.3fr .7fr}}
-.coupon-img-wrap{border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 18px 46px rgba(233,69,96,.18),0 4px 18px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center}
+.coupon-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch;margin-top:34px}
+@media(min-width:768px){.coupon-wrap{grid-template-columns:1.35fr .65fr}}
+.coupon-img-wrap{border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 16px 40px rgba(233,69,96,.14);display:flex;align-items:center;justify-content:center}
 .coupon-img{width:100%;height:auto;display:block;object-fit:contain}
-.coupon-img.dark-bg{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)}
-.coupon-fallback{width:100%;display:flex;background:linear-gradient(105deg,#ffb870 0%,#f88a52 35%,#ef605e 70%,#e94560 100%);border-radius:16px;color:#fff;padding:22px;gap:22px;align-items:center}
-.coupon-fallback .cb-left{flex:0 0 auto;text-align:center;border-right:2px dashed rgba(255,255,255,.5);padding-right:22px}
-.coupon-fallback .cb-tag{display:inline-block;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.28);font-size:11px;font-weight:700;margin-bottom:10px}
+.coupon-fallback{width:100%;display:none;background:linear-gradient(105deg,#ffb870 0%,#f88a52 35%,#ef605e 70%,#e94560 100%);color:#fff;padding:26px;gap:26px;align-items:center}
+.coupon-fallback .cb-left{flex:0 0 auto;text-align:center;border-right:2px dashed rgba(255,255,255,.55);padding-right:26px}
+.coupon-fallback .cb-tag{display:inline-block;padding:3px 12px;border-radius:6px;background:rgba(255,255,255,.28);font-size:11px;font-weight:700;margin-bottom:10px}
 .coupon-fallback .cb-amt{display:flex;align-items:baseline;gap:4px}
-.coupon-fallback .cb-amt .cb-yo{font-size:22px;font-weight:700}
-.coupon-fallback .cb-amt .cb-v{font-size:58px;font-weight:800;line-height:1}
-.coupon-fallback .cb-right{flex:1}
-.coupon-fallback .cb-title{font-size:20px;font-weight:800;margin-bottom:6px}
-.coupon-fallback .cb-exp{font-size:12px;color:rgba(255,255,255,.92);line-height:1.6}
-@media(max-width:480px){.coupon-fallback{flex-direction:column;text-align:center;gap:12px}.coupon-fallback .cb-left{border-right:none;border-bottom:2px dashed rgba(255,255,255,.5);padding-right:0;padding-bottom:12px}}
-
-.coupon{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#fff8f1 0%,#fff 60%);box-shadow:0 18px 46px rgba(233,69,96,.22),0 4px 18px rgba(0,0,0,.06)}
-.coupon .c-head{padding:26px 28px 18px;text-align:center;background:linear-gradient(180deg,#fff8f1 0%,#fff 100%);position:relative}
-.coupon .c-brand{font-size:12px;color:#64748b;letter-spacing:.08em;margin-bottom:10px}
-.coupon .c-logo{width:68px;height:68px;margin:0 auto 10px;border-radius:50%;background:linear-gradient(160deg,#fff,#fff4ea);box-shadow:0 6px 20px rgba(233,69,96,.1);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.coupon .c-logo img{width:64px;height:64px;object-fit:contain}
-.coupon .c-logo .g{font-size:28px}
-.coupon .c-title{font-size:22px;font-weight:800;color:#1a1a2e;letter-spacing:.02em;margin-bottom:2px}
-.coupon .c-title .q{color:#e94560;font-size:13px;margin:0 4px;font-weight:700}
-.coupon .c-ticket{position:relative;margin:0 18px 18px;border-radius:16px;background:linear-gradient(105deg,#ffb870 0%,#f88a52 35%,#ef605e 70%,#e94560 100%);box-shadow:0 10px 26px rgba(233,69,96,.35);overflow:hidden}
-.coupon .c-ticket .cut{position:absolute;left:34%;top:0;bottom:0;border-left:2px dashed rgba(255,255,255,.6)}
-.coupon .c-ticket .notch{position:absolute;left:34%;width:18px;height:18px;border-radius:50%;background:#fff8f1;transform:translate(-50%,-50%);top:0;box-shadow:inset 0 -2px 4px rgba(0,0,0,.06)}
-.coupon .c-ticket .notch.b{top:auto;bottom:0;transform:translate(-50%,50%);box-shadow:inset 0 2px 4px rgba(0,0,0,.06)}
-.coupon .c-ticket .lcol{width:34%;padding:18px 12px 18px 20px;text-align:left;float:left}
-.coupon .c-ticket .lcol .tag{display:inline-block;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.28);color:#fff;font-size:11px;font-weight:700;letter-spacing:.05em;margin-bottom:10px}
-.coupon .c-ticket .lcol .amt{display:flex;align-items:baseline;gap:4px;color:#fff;line-height:1}
-.coupon .c-ticket .lcol .amt .c{font-size:22px;font-weight:700}
-.coupon .c-ticket .lcol .amt .v{font-size:58px;font-weight:800}
-.coupon .c-ticket .rcol{margin-left:34%;padding:18px 18px 18px 14px;color:#fff;text-align:left}
-.coupon .c-ticket .rcol .ttl{font-size:20px;font-weight:800;margin-bottom:6px;letter-spacing:.02em}
-.coupon .c-ticket .rcol .exp{font-size:12px;color:rgba(255,255,255,.92);line-height:1.6}
-.coupon .c-foot{padding:12px 28px 20px;border-top:1px dashed rgba(15,52,96,.1);display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.coupon .c-foot .zsxq{display:flex;align-items:center;gap:10px}
-.coupon .c-foot .zsxq .zc{width:26px;height:26px;border-radius:50%;background:#4c9ed9;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
-.coupon .c-foot .zsxq .zttl{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.2}
-.coupon .c-foot .zsxq .zsub{font-size:12px;color:#64748b;line-height:1.2}
-.coupon .c-foot .zsxq-qr{width:82px;height:82px;border-radius:10px;background:#fff;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.08);margin:-20px 0 0;flex-shrink:0;overflow:hidden}
-.coupon .c-foot .zsxq-qr img{width:100%;height:100%;object-fit:contain;display:block}
-.wxcard{border-radius:22px;padding:26px;text-align:center;background:linear-gradient(160deg,#ffffff,#f0f9ff)}
-html.dark .wxcard{background:linear-gradient(160deg,#16213e,#0f3460)}
-.wxcard .w-head{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px}
-.wxcard .w-head .w-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#07c160,#06ad56);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
-.wxcard .wt{font-size:16px;font-weight:800;color:#1a1a2e;margin:0}
-html.dark .wxcard .wt{color:#fff}
-.wxcard .wq{width:170px;height:170px;border-radius:16px;background:#fff;padding:4px;margin:0 auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.1)}
+.coupon-fallback .cb-yo{font-size:22px;font-weight:700}
+.coupon-fallback .cb-v{font-size:58px;font-weight:800;line-height:1}
+.coupon-fallback .cb-right .cb-title{font-size:20px;font-weight:800;margin-bottom:6px}
+.coupon-fallback .cb-right .cb-exp{font-size:12px;color:rgba(255,255,255,.92);line-height:1.7}
+@media(max-width:480px){.coupon-fallback{flex-direction:column;text-align:center;gap:12px}.coupon-fallback .cb-left{border-right:none;border-bottom:2px dashed rgba(255,255,255,.55);padding-right:0;padding-bottom:12px}}
+.wxcard{border-radius:20px;padding:28px;text-align:center;background:linear-gradient(160deg,#ffffff,#f0f9ff);border:1px solid rgba(15,23,42,.07)}
+.wxcard .w-head{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px}
+.wxcard .w-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#07c160,#06ad56);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
+.wxcard .wt{font-size:16px;font-weight:800;color:#111a54;margin:0}
+.wxcard .wq{width:170px;height:170px;border-radius:14px;background:#fff;padding:5px;margin:0 auto;display:block;box-shadow:0 6px 22px rgba(0,0,0,.1)}
 .wxcard .wdesc{font-size:13px;color:#475569;margin-top:14px;font-weight:600}
-html.dark .wxcard .wdesc{color:#cbd5e1}
 .wxcard .wd{font-size:12px;color:#64748b;margin-top:8px;line-height:1.8}
-html.dark .wxcard .wd{color:#94a3b8}
 
-/* wechat float */
-.wx{position:fixed;bottom:18px;right:18px;z-index:60}
-.wx-pop{position:absolute;bottom:62px;right:0;border-radius:16px;padding:20px;width:220px}
-.wx-pop .t{font-size:14px;font-weight:700;margin-bottom:6px;color:#fff}
-html:not(.dark) .wx-pop .t{color:#1a1a2e}
-.wx-pop .d{font-size:12px;color:#94a3b8;margin-bottom:10px}
-.wx-pop .id{font-size:18px;font-weight:800;margin-bottom:10px}
-.wx-pop .popqr{width:100%;height:120px;border-radius:12px;background:#fff;padding:8px;object-fit:contain;display:block}
-.wx-btn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.3);background:linear-gradient(135deg,#07c160,#06ad56);transition:transform .2s}
-.wx-btn:hover{transform:scale(1.1)}
-.wx-badge{position:absolute;top:-4px;right:-4px;background:var(--retail-accent);color:#fff;font-size:10px;padding:1px 6px;border-radius:999px;animation:pulse 2s infinite}
+.final-cta{background:radial-gradient(900px 460px at 50% -20%,rgba(201,162,39,.2),transparent 60%),linear-gradient(165deg,#1a237e,#111a54);color:#fff;text-align:center;padding:76px 0}
+.final-cta h2{font-size:28px;font-weight:800}
+.final-cta p{color:rgba(255,255,255,.78);margin-top:12px;font-size:14.5px}
+.final-cta .btns{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final-cta .cs{margin-top:20px;font-size:12.5px;color:rgba(255,255,255,.6)}
 
-svg{display:block}
-.spacer{height:70px}
+/* ============ INST PAGE ============ */
+.hero-inst{position:relative;overflow:hidden;background:#0f172a;color:#e2e8f0;text-align:center;padding:80px 0 0}
+.hero-inst .bgcv{position:absolute;inset:0;width:100%;height:100%;opacity:.45}
+.hero-inst .container{position:relative;padding-bottom:56px}
+.hero-inst h1{font-size:40px;font-weight:800;letter-spacing:.02em;margin-top:20px;color:#f8fafc}
+.hero-inst .sub{margin-top:14px;color:#94a3b8;font-size:15.5px;letter-spacing:.06em}
+.hero-inst .sub .sep{color:#3b82f6;margin:0 10px}
+.bounty-pill{position:absolute;top:8px;right:0;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.4);color:#34d399;font-size:12.5px;font-weight:700;cursor:pointer;transition:.25s;letter-spacing:.03em}
+.bounty-pill:hover{background:rgba(16,185,129,.2);transform:translateY(-1px)}
+@media(max-width:760px){.bounty-pill{position:static;margin-bottom:18px;display:inline-flex}}
+.i-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:820px;margin:40px auto 0}
+.i-stat{background:rgba(30,41,59,.6);border:1px solid rgba(148,163,184,.14);border-radius:16px;padding:18px 10px;backdrop-filter:blur(6px)}
+.i-stat .v{font-size:26px;font-weight:800;color:#60a5fa}
+.i-stat .v em{font-style:normal;font-size:14px;font-weight:600;color:#94a3b8;margin-left:2px}
+.i-stat .l{font-size:12px;color:#94a3b8;margin-top:4px}
+@media(max-width:680px){.i-stats{grid-template-columns:1fr 1fr}.hero-inst h1{font-size:29px}}
+.ticker{overflow:hidden;border-top:1px solid rgba(148,163,184,.12);border-bottom:1px solid rgba(148,163,184,.12);background:rgba(2,6,23,.6);position:relative}
+.ticker-inner{display:flex;gap:44px;width:max-content;animation:tick 36s linear infinite;padding:12px 0}
+@keyframes tick{to{transform:translateX(-50%)}}
+.tk{display:flex;align-items:center;gap:10px;font-size:13px;white-space:nowrap}
+.tk .n{color:#cbd5e1;font-weight:600}
+.tk .p{color:#e2e8f0;font-weight:700}
+.tk .c{font-size:11.5px}
+.tk .up{color:#10b981}.tk .dn{color:#ef4444}
+.tk .side{font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:5px}
+.tk .long{background:rgba(16,185,129,.14);color:#34d399;border:1px solid rgba(16,185,129,.35)}
+.tk .short{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.35)}
+
+.page-inst{background:#0b1220;color:#e2e8f0}
+.page-inst .sec-title{color:#f8fafc}
+.page-inst .sec-sub{color:#94a3b8}
+.i-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:38px}
+.i-card{background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.14);border-radius:18px;padding:26px 22px;transition:.3s;backdrop-filter:blur(8px)}
+.i-card:hover{transform:translateY(-5px);border-color:rgba(59,130,246,.45);background:rgba(30,41,59,.8);box-shadow:0 18px 40px rgba(2,6,23,.5)}
+.i-card .ico{width:46px;height:46px;border-radius:12px;background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.3);color:#60a5fa;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.i-card h4{font-size:15.5px;font-weight:800;color:#f1f5f9;margin-bottom:8px}
+.i-card p{font-size:12.5px;color:#94a3b8;line-height:1.75}
+.i-card.bounty{background:linear-gradient(150deg,rgba(16,185,129,.14),rgba(30,41,59,.6));border-color:rgba(16,185,129,.35)}
+.i-card.bounty .ico{background:rgba(16,185,129,.14);border-color:rgba(16,185,129,.4);color:#34d399}
+
+.a-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:38px}
+.a-cat{background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.14);border-radius:16px;padding:20px}
+.a-cat h5{font-size:13px;color:#60a5fa;letter-spacing:.14em;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.a-cat h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(59,130,246,.4),transparent)}
+.a-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(148,163,184,.12)}
+.a-row:last-child{border-bottom:none}
+.a-row .nm{font-size:13.5px;color:#e2e8f0;font-weight:600}
+.a-row .meta{display:flex;align-items:center;gap:10px}
+.a-row .pr{font-size:12px;color:#94a3b8}
+.a-row .chg{font-size:11.5px;font-weight:700}
+.a-row .chg.up{color:#10b981}.a-row .chg.dn{color:#ef4444}
+.side-tag{font-size:10.5px;font-weight:800;padding:2.5px 9px;border-radius:5px}
+.side-tag.long{background:rgba(16,185,129,.14);color:#34d399;border:1px solid rgba(16,185,129,.35)}
+.side-tag.short{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.35)}
+.a-note{text-align:center;color:#64748b;font-size:11.5px;margin-top:18px}
+
+.member-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.m-tag{padding:9px 18px;border-radius:999px;background:rgba(30,41,59,.6);border:1px solid rgba(148,163,184,.18);font-size:13px;color:#cbd5e1;font-weight:600}
+.i-rev{max-width:660px;margin:36px auto 0}
+.i-rev .rev{background:rgba(30,41,59,.55);border-color:rgba(148,163,184,.16)}
+.i-rev .rev .q{color:#e2e8f0}
+.i-rev .rev .q::before{color:#60a5fa}
+.i-rev .rev .who-s{color:#94a3b8}
+.safe-box{max-width:660px;margin:30px auto 0;display:flex;gap:14px;align-items:flex-start;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);border-radius:14px;padding:18px 20px;text-align:left}
+.safe-box .ic{color:#f87171;flex-shrink:0;margin-top:2px}
+.safe-box .tx{font-size:12.5px;color:#cbd5e1;line-height:1.8}
+.safe-box .tx b{color:#f87171}
+
+.faq{max-width:720px;margin:36px auto 0;text-align:left}
+.fq{background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.14);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .25s}
+.fq.open{border-color:rgba(59,130,246,.4)}
+.fq .q{padding:17px 20px;cursor:pointer;font-weight:700;font-size:14.5px;color:#f1f5f9;display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none}
+.fq .q .chev{flex-shrink:0;transition:transform .3s;color:#60a5fa}
+.fq.open .chev{transform:rotate(180deg)}
+.fq .a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 20px;font-size:13px;color:#94a3b8;line-height:1.85}
+.fq.open .a{max-height:260px;padding:0 20px 18px}
+.final-inst{background:linear-gradient(165deg,#0f172a,#020617);text-align:center;padding:76px 0;border-top:1px solid rgba(148,163,184,.1)}
+.final-inst h2{font-size:27px;font-weight:800;color:#f8fafc}
+.final-inst p{color:#94a3b8;margin-top:12px;font-size:14.5px}
+.final-inst .btns{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final-inst .cs{margin-top:20px;font-size:12.5px;color:#64748b}
+
+/* ============ FOOTER / FLOAT / MODAL ============ */
+footer{padding:34px 0 90px;background:#fff;text-align:center;color:#94a3b8;font-size:12.5px}
+body.t-inst footer{background:#020617;border-top:1px solid rgba(148,163,184,.08)}
+footer .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer .fl a{color:#64748b;transition:.2s}
+footer .fl a:hover{color:#1a237e}
+body.t-inst footer .fl a:hover{color:#60a5fa}
+footer .risk{margin-top:8px;font-size:11px;color:#94a3b8;line-height:1.8;max-width:640px;margin-left:auto;margin-right:auto}
+.float-wx{position:fixed;right:18px;bottom:18px;z-index:80;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#07c160,#06ad56);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(7,193,96,.42);cursor:pointer;border:none;transition:.25s}
+.float-wx:hover{transform:scale(1.08)}
+.modal-ov{position:fixed;inset:0;background:rgba(2,6,23,.72);z-index:90;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+.modal-ov.on{display:flex}
+.modal{background:#fff;border-radius:20px;padding:30px 26px;max-width:320px;width:100%;text-align:center;position:relative;animation:fadeUp .3s}
+.modal .x{position:absolute;top:12px;right:14px;border:none;background:none;font-size:22px;color:#94a3b8;cursor:pointer;line-height:1}
+.modal h4{font-size:16px;font-weight:800;color:#111a54;margin-bottom:4px}
+.modal .msub{font-size:12px;color:#64748b;margin-bottom:16px}
+.modal .mqr{width:200px;height:200px;margin:0 auto;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:6px;display:block}
+.modal .mwid{margin-top:14px;font-size:13px;color:#475569}
+.modal .mwid b{color:#e94560;font-size:16px;letter-spacing:.04em}
+.modal .mnote{margin-top:6px;font-size:11.5px;color:#94a3b8}
 </style>
 </head>
-<body>
-<div class="topbar" id="topbar">
-  <span class="dot"></span>
-  <strong style="color:var(--retail-gold)">路演预告</strong>
-  <span style="color:#e2e8f0">下一场：本周五 20:00 · FICC跨资产配置月度复盘</span>
-  <button class="close" id="closeTopbar" aria-label="关闭">×</button>
-</div>
-
-<nav class="nav">
-  <div class="nav-pills glass">
-    <button data-route="home" class="on">首页</button>
-    <button data-route="institution">机构</button>
-    <button data-route="retail">散户</button>
-    <button class="theme" id="themeBtn" aria-label="切换主题"></button>
-  </div>
-</nav>
-
+<body class="t-home">
+<header><div class="container hd">
+  <a class="brand" href="#/"><span class="logo">M</span><span class="bname">知识星球 · 社群入口</span></a>
+  <nav>
+    <a href="#/" data-r="home">首页</a>
+    <a href="#/retail" data-r="retail">个人投资者</a>
+    <a href="#/inst" data-r="inst">机构与FICC</a>
+  </nav>
+</div></header>
 <main id="app"></main>
-
-<div class="wx" id="wx">
-  <div class="wx-pop glass" id="wxPop" style="display:none">
-    <div class="t">添加微信咨询</div>
-    <div class="d">客服微信号：</div>
-    <div class="id gold-text">macroficc</div>
-    <img class="popqr" src="assets/qr-wechat-official.png" alt="微信客服二维码：扫码显示微信号">
-    <div class="d" style="text-align:center;margin-top:8px">扫码或搜索微信号添加</div>
+<footer><div class="container">
+  <div class="fl">
+    <a href="#/">首页</a><a href="#/retail">个人投资者社群</a><a href="#/inst">专业投研社群</a>
+    <a href="https://t.zsxq.com/BEK38" target="_blank" rel="noopener">加入星球</a>
+    <a href="javascript:void(0)" onclick="openWx()">客服微信</a>
   </div>
-  <button class="wx-btn" id="wxBtn" aria-label="微信客服">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 2.08 1.13 3.93 2.89 5.14L4 18l2.6-1.4c.9.25 1.86.4 2.9.4.18 0 .36-.01.54-.02A5.8 5.8 0 0 1 9.7 15c0-3.3 3.13-6 7-6 .2 0 .39.01.58.03C16.66 5.6 13.36 4 9.5 4zm-3 4.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm6 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM16.7 10c-3.2 0-5.7 2.24-5.7 5 0 2.76 2.5 5 5.7 5 .78 0 1.52-.13 2.2-.37L21 21l-.6-1.7A4.96 4.96 0 0 0 22.4 16c0-2.76-2.5-6-5.7-6zm-2 3a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z"/></svg>
-  </button>
-  <span class="wx-badge" id="wxBadge">咨询</span>
+  <div>© 2026 MACRO FICC · 知识星球社群</div>
+  <div class="risk">内容仅供学习与研究参考，不构成任何投资建议。市场有风险，决策需独立判断。数据来源：Wind，截至 2026-08-27。</div>
+</div></footer>
+<button class="float-wx" onclick="openWx()" aria-label="客服微信">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 2.08 1.13 3.93 2.89 5.14L4 18l2.6-1.4c.9.25 1.86.4 2.9.4.18 0 .36-.01.54-.02A5.8 5.8 0 0 1 9.7 15c0-3.3 3.13-6 7-6 .2 0 .39.01.58.03C16.66 5.6 13.36 4 9.5 4zm-3 4.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm6 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM16.7 10c-3.2 0-5.7 2.24-5.7 5 0 2.76 2.5 5 5.7 5 .78 0 1.52-.13 2.2-.37L21 21l-.6-1.7A4.96 4.96 0 0 0 22.4 16c0-2.76-2.5-6-5.7-6zm-2 3a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z"/></svg>
+</button>
+<div class="modal-ov" id="wxModal" onclick="if(event.target===this)closeWx()">
+  <div class="modal">
+    <button class="x" onclick="closeWx()" aria-label="关闭">×</button>
+    <h4>添加客服微信</h4>
+    <div class="msub">宏观 / 权益 / 商品 交流群入群通道</div>
+    <img class="mqr" src="assets/qr-wechat-official.png" alt="微信客服二维码">
+    <div class="mwid">微信号：<b>macroficc</b></div>
+    <div class="mnote">微信扫一扫，或搜索微信号添加</div>
+  </div>
 </div>
-
 <script>
 /* ============ DATA ============ */
-const ASSETS=[
-{name:'恒科',full:'恒生科技指数',tag:'多',dir:1,price:'4,620',chg:'-0.13%',note:'估值修复+流动性回暖'},
-{name:'印度',full:'印度Nifty50',tag:'多',dir:1,price:'24,335',chg:'+0.48%',note:'外资回流+卢比企稳'},
-{name:'中债',full:'中债10Y到期收益率',tag:'多',dir:1,price:'1.70%',chg:'+1bp',note:'宽货币延续+基本面待验'},
-{name:'美债',full:'美10Y收益率',tag:'空',dir:-1,price:'4.66%',chg:'+2bp',note:'期限溢价回升+财政扩张'},
-{name:'黄金',full:'COMEX黄金',tag:'多',dir:1,price:'4,608',chg:'-0.48%',note:'央行购金+实际利率下行'},
-{name:'铜',full:'LME铜3个月',tag:'空',dir:-1,price:'14,233',chg:'-0.64%',note:'需求弱修复+库存累积'},
-{name:'黑色',full:'螺纹钢活跃合约',tag:'空',dir:-1,price:'3,088',chg:'+0.39%',note:'地产拖累+供给偏高'},
-{name:'欧元',full:'EUR/USD',tag:'多',dir:1,price:'1.1654',chg:'-0.18%',note:'利差收窄+欧元区复苏'},
-{name:'日元',full:'USD/JPY',tag:'空',dir:-1,price:'159.31',chg:'+0.07%',note:'利差维持+干预边界临近'}
-];
+const JOIN='https://t.zsxq.com/BEK38';
+const YEAR_PRICE=499,COUPON=100,COUPON_EXPIRE='2030/07/15 12:00';
 const DATA_AS_OF='数据来源：Wind · 截至 2026-08-27';
-const INST_TYPES=['私募基金','券商自营','期货资管','信托公司','公募专户','外资行','家族办公室','保险资管'];
-const METRICS=[{n:9,s:'+',l:'覆盖资产类别'},{n:20,s:'+',l:'原创投研框架'},{n:3,s:'',l:'专业数据终端'},{n:1200,s:'+',l:'散户社群成员'}];
-const TIMELINE=[
-{stage:'第 1 周',title:'加入新手社群',desc:'进入「财商提升与财务自由之路」社群，建立宏观交易认知地基'},
-{stage:'第 1 月',title:'系统学习',desc:'视频课程 + 电子书，掌握跨资产分析的基本语言与工具'},
-{stage:'第 3 月',title:'跟随信号实操',desc:'跟踪前瞻交易信号，在恒科/黄金/美债等品种上建立实盘手感'},
-{stage:'持续',title:'进阶专属群',desc:'获取彭博/路透终端截图，参与路演复盘与交易纠错工作坊'}
-];
-const BENEFITS=['前瞻交易信号（9大品种）','原创投研框架 20+ 篇','Wind/Eikon/彭博数据查询','专属交流群与路演','视频课程 + 电子书','邀请返利机制'];
-const YEAR_PRICE=499,COUPON=100,PER_INVITE=100,CURRENT=20,NEXT=40;
-const COUPON_EXPIRE='2030/07/15 12:00';
-const FREE_NEED=Math.ceil((YEAR_PRICE-COUPON)/PER_INVITE);
-
+const ASSETS=[
+{cat:'权益',nm:'恒生科技',pr:'4,620',chg:'-0.13%',up:0,side:'long'},
+{cat:'权益',nm:'印度 Nifty50',pr:'24,335',chg:'+0.48%',up:1,side:'long'},
+{cat:'固收',nm:'中债 10Y',pr:'1.70%',chg:'+1bp',up:0,side:'short'},
+{cat:'固收',nm:'美债 10Y',pr:'4.66%',chg:'+2bp',up:0,side:'short'},
+{cat:'商品',nm:'COMEX 黄金',pr:'4,608',chg:'-0.48%',up:0,side:'long'},
+{cat:'商品',nm:'LME 铜',pr:'14,233',chg:'-0.64%',up:0,side:'short'},
+{cat:'商品',nm:'螺纹钢',pr:'3,088',chg:'+0.39%',up:1,side:'short'},
+{cat:'外汇',nm:'EUR/USD',pr:'1.1654',chg:'-0.18%',up:0,side:'long'},
+{cat:'外汇',nm:'USD/JPY',pr:'159.31',chg:'+0.07%',up:1,side:'short'}];
+const SIDE_NAME={long:'多',short:'空'};
 /* ============ ICONS ============ */
-const I={
-building:'<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>',
-growth:'<path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-db:'<ellipse cx="12" cy="5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" fill="none" stroke="currentColor" stroke-width="1.6"/>',
-layers:'<path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/>',
+const P={
+book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+users:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+pen:'<path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+archive:'<path d="M21 8v13H3V8M1 3h22v5H1V3zM10 12h4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+stairs:'<path d="M3 22h18M6 18h4v-4h4v-4h4V6h3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+coins:'<circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="15" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 12l1.5 1.5" stroke="currentColor" stroke-width="1.6"/>',
 target:'<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
-shield:'<path d="M12 3l8 3v6c0 4.5-3 7.5-8 9-5-1.5-8-4.5-8-9V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-arrow:'<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-check:'<path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-spark:'<path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="currentColor"/>',
-sun:'<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>',
-moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>',
-wechat:'<path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 2.08 1.13 3.93 2.89 5.14L4 18l2.6-1.4c.9.25 1.86.4 2.9.4.18 0 .36-.01.54-.02A5.8 5.8 0 0 1 9.7 15c0-3.3 3.13-6 7-6 .2 0 .39.01.58.03C16.66 5.6 13.36 4 9.5 4zm-3 4.5a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm6 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM16.7 10c-3.2 0-5.7 2.24-5.7 5 0 2.76 2.5 5 5.7 5 .78 0 1.52-.13 2.2-.37L21 21l-.6-1.7A4.96 4.96 0 0 0 22.4 16c0-2.76-2.5-6-5.7-6zm-2 3a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4zm4 0a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z" fill="currentColor"/>'
-};
+chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+layers:'<path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>',
+headset:'<path d="M3 14v-2a9 9 0 0 1 18 0v2M3 14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-7zM21 14a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v-7z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>',
+lock:'<rect x="4" y="11" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+mic:'<rect x="9" y="2" width="6" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4M8 21h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+chart:'<path d="M3 3v18h18M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+check:'<path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+chev:'<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'};
 const svg=(p,s=24)=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24">'+p+'</svg>';
 
-/* ============ K-LINE CANVAS ============ */
-function mountCanvas(el,dark){
-  const cv=el;const ctx=cv.getContext('2d');
-  if(!ctx)return()=>{}; // 容错：无 canvas 上下文时安全跳过，避免白屏
-  let raf,t=0,candles=[],linePts=[];
-  function resize(){cv.width=cv.offsetWidth*devicePixelRatio;cv.height=cv.offsetHeight*devicePixelRatio;init();}
-  function init(){
-    const w=cv.width,h=cv.height;
-    if(dark){
-      candles=[];let price=h*0.5;const cw=14*dpr(),gap=4*dpr();const count=Math.ceil(w/(cw+gap))+2;
-      for(let i=0;i<count;i++){const o=price;const d=(Math.random()-0.5)*h*0.04;const c=Math.max(20,Math.min(h-20,price+d));price=c;candles.push({o,c,hi:Math.min(o,c)-Math.random()*h*0.03,lo:Math.max(o,c)+Math.random()*h*0.03});}
-    }
-  }
-  const dpr=()=>devicePixelRatio||1;
-  function draw(){
-    const w=cv.width,h=cv.height;ctx.clearRect(0,0,w,h);
-    if(dark){
-      const cw=14*dpr(),gap=4*dpr();
-      candles.forEach((c,i)=>{const x=i*(cw+gap);const up=c.c>=c.o;ctx.strokeStyle=up?'rgba(76,217,158,.32)':'rgba(233,69,96,.30)';ctx.fillStyle=up?'rgba(76,217,158,.20)':'rgba(233,69,96,.18)';ctx.lineWidth=dpr();ctx.beginPath();ctx.moveTo(x+cw/2,c.hi);ctx.lineTo(x+cw/2,c.lo);ctx.stroke();const bt=Math.min(c.o,c.c);const bh=Math.max(Math.abs(c.c-c.o),2);ctx.fillRect(x,bt,cw,bh);});
-      if(t%2===0){const last=candles[candles.length-1];const d=(Math.random()-0.5)*h*0.04;const c=Math.max(20,Math.min(h-20,last.c+d));candles.push({o:last.c,c,hi:Math.min(last.c,c)-Math.random()*h*0.03,lo:Math.max(last.c,c)+Math.random()*h*0.03});candles.shift();}
-    }else{
-      ctx.strokeStyle='rgba(15,52,96,.18)';ctx.lineWidth=2*dpr();ctx.beginPath();const sx=w/60;
-      for(let i=0;i<=60;i++){const x=i*sx;const y=h*0.5+Math.sin(i*0.4+t*0.02)*h*0.15+Math.sin(i*0.13+t*0.015)*h*0.1;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();
-      ctx.strokeStyle='rgba(233,69,96,.14)';ctx.beginPath();
-      for(let i=0;i<=60;i++){const x=i*sx;const y=h*0.6+Math.cos(i*0.3+t*0.018)*h*0.12;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();
-    }
-    t++;raf=requestAnimationFrame(draw);
-  }
-  resize();draw();
-  window.addEventListener('resize',resize);
-  return ()=>{cancelAnimationFrame(raf);window.removeEventListener('resize',resize);};
+/* ============ HOME ============ */
+function renderHome(){
+document.title='知识星球社群入口 · 财商提升 / 全球宏观投研交易';
+return `
+<div class="hero-home"><div class="container">
+  <div class="badge"><span class="dot"></span>知识星球 · 两大社群官方入口</div>
+  <h1 style="margin-top:20px">你是<span class="em">谁</span>，决定你看见<span class="em">什么</span></h1>
+  <p>两类社群、两条路径、两套完全不同的内容体系——3 秒找到属于你的那一扇门</p>
+  <div class="dual">
+    <a class="dcard retail reveal" href="#/retail">
+      <div class="k">PERSONAL INVESTOR · 个人投资者</div>
+      <h3>理财新手的财商提升<br>与财务自由之路</h3>
+      <p>从零起步的系统化理财成长路径：家庭理财 · 基金分析 · 组合配置 · 副业增收 · 保险规划，会员 1200+ 位同路人</p>
+      <span class="go">进入个人版 →</span>
+    </a>
+    <a class="dcard inst reveal" href="#/inst">
+      <div class="k">INSTITUTIONAL · 机构与FICC从业者</div>
+      <h3>全球宏观投研交易<br>专业社群</h3>
+      <p>前瞻交易机会 · 高胜率策略 · 专业投研框架：恒科、印度、中债、美债、黄金、铜、黑色、欧元、日元九大品种多空研判</p>
+      <span class="go">进入专业版 →</span>
+    </a>
+  </div>
+  <div class="home-note">已有明确目标？<a href="${JOIN}" target="_blank" rel="noopener" style="color:#a97f10;font-weight:700">直接加入星球 →</a>&nbsp;&nbsp;·&nbsp;&nbsp;有疑问？<a href="javascript:void(0)" onclick="openWx()" style="color:#a97f10;font-weight:700">咨询客服微信</a></div>
+</div></div>`;
 }
 
-/* ============ HELPERS ============ */
-function revealObs(root){
-  const els=root.querySelectorAll('.reveal');
-  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}})},{threshold:0.12});
-  els.forEach(e=>obs.observe(e));
-  return obs;
+/* ============ RETAIL ============ */
+const R_BENEFITS=[
+{ic:P.book,t:'系统财商课程',d:'从理财新手到独立投资者的完整知识图谱，覆盖家庭理财、基金分析、组合配置、副业增收、保险规划等核心模块，零基础也能按图索骥'},
+{ic:P.users,t:'专属交流社群',d:'按方向加入分类社群（宏观 / 权益 / 商品等），群内实时更新彭博、路透等专业数据源截图与最新内外资研报，与同路人保持同频'},
+{ic:P.pen,t:'原创方法论',d:'持续输出「关于钱的一切」原创内容：读书笔记、实战案例、资产配置逻辑，把零散认知整理成可复用的体系'},
+{ic:P.archive,t:'历史资源库',d:'加入即可查阅专栏内分类汇总的全部历史分享——每日甄选数据、图表、研报、电子书、视频课程，随取随用'},
+{ic:P.stairs,t:'阶梯定价机制',d:'续费专享原价七折；原创投研框架每累积 20 篇，最新加入价提高 100 元——早加入，早受益，早锁定'}];
+const R_PERSONAS=[
+{e:'🌱',t:'理财小白，想建立系统认知'},{e:'💼',t:'有一定积蓄，不知如何配置'},
+{e:'🚀',t:'希望开辟副业增收渠道'},{e:'🧭',t:'追求财务自由，需要长期规划'}];
+const R_REVIEWS=[
+{q:'零基础进来，跟着专栏一步步学，三个月后第一次看懂了自己的基金持仓，也给家里做了一份完整的资产方案。',w:'从月光到有规划',av:'🌱'},
+{q:'每天甄选的数据、图表和读书笔记已经成了习惯，内容密度很高，这个价格真的很值。',w:'上班族 · 坚持打卡 200+ 天',av:'💼'},
+{q:'副业兼职那几篇方法论是真正落地的，照着做通了第一笔非工资收入，财商课里没有的东西这里全有。',w:'副业探索者',av:'🚀'},
+{q:'从定投纪律到组合配置，焦虑感明显少了——知道自己每一步在做什么，比赚多少更安心。',w:'长期主义者 · 第二年续费',av:'🧭'}];
+function renderRetail(){
+document.title='理财新手的财商提升与财务自由之路 · 知识星球';
+const revs=R_REVIEWS.map((r,i)=>`<div class="rev${i===0?' on':''}" data-rev="${i}"><div class="q">${r.q}</div><div class="who-s"><span class="av">${r.av}</span>${r.w}</div></div>`).join('');
+const dots=R_REVIEWS.map((_,i)=>`<button data-dot="${i}" class="${i===0?'on':''}" aria-label="评价 ${i+1}"></button>`).join('');
+return `
+<div class="hero-retail"><div class="container">
+  <div class="badge"><span class="dot"></span>知识星球 · 个人投资者社群</div>
+  <h1><span class="gold">财商提升</span> × <span class="gold">财务自由</span><br>普通人的第二财富曲线</h1>
+  <p class="sub">从零起步的系统化理财成长路径——家庭理财 · 基金分析 · 组合配置 · 副业增收 · 保险规划，一站掌握</p>
+  <div class="hero-cta">
+    <a class="btn btn-gold" href="${JOIN}" target="_blank" rel="noopener">开启财富成长之旅</a>
+    <a class="btn btn-ghost-l" href="#r-benefits">先看五大权益</a>
+  </div>
+  <div class="r-stats">
+    <div class="r-stat"><div class="v num"><span class="cnt" data-n="1200">0</span>+</div><div class="l">社群成员同行</div></div>
+    <div class="r-stat"><div class="v num"><span class="cnt" data-n="6">0</span> 大</div><div class="l">核心内容板块</div></div>
+    <div class="r-stat"><div class="v num"><span class="cnt" data-n="3">0</span>–5 条</div><div class="l">日均更新分享</div></div>
+  </div>
+</div></div>
+
+<section class="sec" id="r-benefits"><div class="container">
+  <h2 class="sec-title reveal">五大核心权益</h2>
+  <p class="sec-sub reveal">为「从零到一」设计的完整成长闭环</p>
+  <div class="b-grid">
+    ${R_BENEFITS.map((b,i)=>`<div class="b-card reveal"><div class="idx num">0${i+1}</div><div class="ico">${svg(P[b.ic],24)}</div><h4>${b.t}</h4><p>${b.d}</p></div>`).join('')}
+  </div>
+</div></section>
+
+<section class="sec" style="background:linear-gradient(165deg,#f8fafc,#eef2ff)"><div class="container">
+  <h2 class="sec-title reveal">这个社群适合谁</h2>
+  <p class="sec-sub reveal">如果你符合其中任何一条，这里就是为你准备的</p>
+  <div class="who-tags">${R_PERSONAS.map(p=>`<div class="who reveal"><span class="av">${p.e}</span>${p.t}</div>`).join('')}</div>
+</div></section>
+
+<section class="sec trust"><div class="container">
+  <h2 class="sec-title reveal">他们已经在路上</h2>
+  <p class="sec-sub reveal">真实的成长反馈，来自社群成员</p>
+  <div class="trust-row reveal">
+    <div class="trust-pill"><span class="ic">${svg(P.users,18)}</span><b class="num cnt" data-n="1200">0</b>位成员已加入</div>
+    <div class="trust-pill"><span class="ic">${svg(P.chart,18)}</span>日均更新 <b class="num">3–5</b> 条</div>
+    <div class="trust-pill"><span class="ic">${svg(P.book,18)}</span>历史分享全量可查</div>
+  </div>
+  <div class="rev-wrap reveal"><div id="revBox">${revs}</div><div class="rev-dots">${dots}</div></div>
+</div></section>
+
+<section class="sec"><div class="container">
+  <h2 class="sec-title reveal">会员定价 · 新人优惠券</h2>
+  <p class="sec-sub reveal">年费 ${YEAR_PRICE} 元，新人立减 ${COUPON} 元，续费专享七折</p>
+  <div class="coupon-wrap">
+    <a class="coupon-img-wrap reveal" href="${JOIN}" target="_blank" rel="noopener" title="点击加入星球并使用优惠券">
+      <img class="coupon-img" src="assets/coupon-zsxq-original.png" alt="星球新人优惠券 立减 ${COUPON} 元" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="coupon-fallback">
+        <div class="cb-left"><span class="cb-tag">新人立减</span><div class="cb-amt"><span class="cb-yo">¥</span><span class="cb-v num">${COUPON}</span></div></div>
+        <div class="cb-right"><div class="cb-title">新人立减券</div><div class="cb-exp">${COUPON_EXPIRE} 后失效<br>首年订阅可用 · 每人 1 张</div></div>
+      </div>
+    </a>
+    <div class="wxcard reveal">
+      <div class="w-head"><div class="w-logo">微</div><div class="wt">添加客服微信</div></div>
+      <img class="wq" src="assets/qr-wechat-official.png" alt="微信客服二维码" loading="lazy" onclick="openWx()" style="cursor:pointer">
+      <div class="wdesc">微信扫一扫 · 选择方向入群</div>
+      <div class="wd">宏观 / 权益 / 商品 交流群<br>群内实时更新专业数据与研报</div>
+    </div>
+  </div>
+  <div class="price-card reveal">
+    <div class="pl">星球年费会员</div>
+    <div class="pv num"><span class="c">¥</span>${YEAR_PRICE}<span class="y"> /年</span></div>
+    <div><span class="off">新人立减 ¥${COUPON} · 券后 ¥${YEAR_PRICE-COUPON}</span></div>
+    <ul class="list">
+      <li><span class="ck">${svg(P.check,15)}</span>续费专享原价七折</li>
+      <li><span class="ck">${svg(P.check,15)}</span>原创框架每 20 篇，加入价上调 ¥100</li>
+      <li><span class="ck">${svg(P.check,15)}</span>历史分享 · 数据图表 · 电子书全量解锁</li>
+    </ul>
+    <a class="btn btn-gold" href="${JOIN}" target="_blank" rel="noopener">开启财富成长之旅</a>
+  </div>
+</div></section>
+
+<div class="final-cta"><div class="container">
+  <h2 class="reveal">复利，是这个时代给普通人最好的礼物</h2>
+  <p class="reveal">每一天的财商积累，都会在未来的某一天连成曲线——最好的开始时间是十年前，其次是现在</p>
+  <div class="btns reveal">
+    <a class="btn btn-gold" href="${JOIN}" target="_blank" rel="noopener">立即加入，开启复利人生</a>
+    <button class="btn btn-ghost-l" onclick="openWx()">咨询客服微信</button>
+  </div>
+  <div class="cs">已有 <b class="num">1200+</b> 位成员与你同行 · 加入后可在专栏查阅全部历史分享</div>
+</div></div>`;
 }
-function countUp(el,target,dur=1400){
-  let raf,start;const obs=new IntersectionObserver((es)=>{if(es[0].isIntersecting){const tick=(t)=>{if(!start)start=t;const p=Math.min((t-start)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e).toLocaleString();if(p<1)raf=requestAnimationFrame(tick);};raf=requestAnimationFrame(tick);obs.disconnect();}},{threshold:0.3});
-  obs.observe(el);
+
+/* ============ INSTITUTION ============ */
+const I_BENEFITS=[
+{ic:P.coins,t:'赏金推广计划',d:'星球已开启赏金功能：每成功邀请 1 人加入即可获得 ¥100 现金奖励，总金额上不封顶，多邀多得',b:1},
+{ic:P.target,t:'前瞻交易机会',d:'恒科、印度、中债、美债、黄金、铜、黑色、欧元、日元九大品种多空转换研判，胜率高——把握一个品种即可赚钱',b:0},
+{ic:P.chat,t:'专属交流群',d:'按资产类别分群（宏观 / 权益 / 商品），群内实时更新彭博、路透终端截图与最新内外资研报，添加微信 macroficc 选择入群',b:0},
+{ic:P.layers,t:'原创投研框架',d:'交易策略技巧、基金组合构建、FICC 资产配置、全球宏观对冲等系统化方法论，持续更新、层层递进',b:0},
+{ic:P.archive,t:'历史资源库',d:'专栏内分类汇总所有历史分享：每日甄选数据、图表、研报、电子书、视频课程，加入即可全量回溯',b:0},
+{ic:P.stairs,t:'阶梯定价',d:'续费专享原价七折；原创投研框架每累积 20 篇，最新加入价提高 ¥100——内容越厚，价格越高，早加入即锁定',b:0},
+{ic:P.headset,t:'免费答疑服务',d:'支持查研报、Wind / Eikon / 彭博终端数据查询、内容优化建议等；交易时段回复或有延迟，迟复为歉',b:0},
+{ic:P.lock,t:'独家内部分享',d:'因公开分享被抄袭传播，核心策略与深度分析仅在星球内部分享；截图人员移出后，星球外不再补发',b:0},
+{ic:P.mic,t:'定期路演',d:'星球内择机举办路演，聚焦解决「策略看对但交易做错」的实战顽疾，把认知兑现为执行力',b:0}];
+const I_FAQ=[
+{q:'加入价格是多少？',a:`年费 ¥${YEAR_PRICE}，新人可用 ¥${COUPON} 立减券（券后 ¥${YEAR_PRICE-COUPON}）。续费专享原价七折；原创投研框架每累积 20 篇，最新加入价提高 ¥100，越早加入成本越低。`},
+{q:'邀请赏金如何计算与结算？',a:'星球已开启赏金功能：每成功邀请 1 人加入，即可获得 ¥100 现金奖励，总金额上不封顶。通过你专属的邀请链接加入即计入，奖励按平台规则结算。'},
+{q:'星球内容有什么规则？',a:'核心策略与深度分析仅在星球内部分享。因公开内容曾被抄袭传播，星球外不另做分享；违规截图、外传者将被移出，移出后不再补发内容。'},
+{q:'答疑服务覆盖哪些范围？',a:'支持查研报、Wind / Eikon / 彭博等金融终端数据查询、内容优化建议等；交易时段提问回复或有延迟，迟复为歉。'}];
+const I_REVIEWS=[
+{q:'恒科和黄金这两波的节奏都跟上了，信号的前瞻性是真好——不需要盯十个品种，把一个做透就够了。',w:'私募基金经理 · 星球第二年',av:'📊'},
+{q:'群里彭博、路透的截图和内外资研报更新，比我们内部渠道还快半天，时效就是 Alpha。',w:'券商自营交易员',av:'⚡'},
+{q:'上次路演把「看对做错」拆得很透：仓位、止损、执行纪律三件事讲清楚了，回去就能改。',w:'FICC 从业者 · 资管方向',av:'🎯'}];
+function renderInst(){
+document.title='全球宏观投研交易 · 专业知识星球';
+const cats={};ASSETS.forEach(a=>{(cats[a.cat]=cats[a.cat]||[]).push(a)});
+const catHtml=Object.entries(cats).map(([c,list])=>`
+  <div class="a-cat reveal"><h5>${c}</h5>${list.map(a=>`
+    <div class="a-row"><div class="nm">${a.nm}</div><div class="meta"><span class="pr num">${a.pr}</span><span class="chg num ${a.up?'up':'dn'}">${a.chg}</span><span class="side-tag ${a.side}">${SIDE_NAME[a.side]}</span></div></div>`).join('')}
+  </div>`).join('');
+const tickerHtml=ASSETS.map(a=>`<span class="tk"><span class="n">${a.nm}</span><span class="p num">${a.pr}</span><span class="c num ${a.up?'up':'dn'}">${a.chg}</span><span class="side ${a.side}">${SIDE_NAME[a.side]}</span></span>`).join('');
+const revs=I_REVIEWS.map((r,i)=>`<div class="rev${i===0?' on':''}" data-rev="${i}"><div class="q">${r.q}</div><div class="who-s"><span class="av">${r.av}</span>${r.w}</div></div>`).join('');
+const dots=I_REVIEWS.map((_,i)=>`<button data-dot="${i}" class="${i===0?'on':''}" aria-label="评价 ${i+1}"></button>`).join('');
+return `
+<div class="page-inst">
+<div class="hero-inst">
+  <canvas class="bgcv" id="instCv"></canvas>
+  <div class="container">
+    <button class="bounty-pill" onclick="document.getElementById('i-benefits').scrollIntoView({behavior:'smooth'})">
+      ${svg(P.coins,15)}赏金计划 · 邀请 1 人得 ¥100，上不封顶 →
+    </button>
+    <div class="badge"><span class="dot" style="background:#34d99a;box-shadow:0 0 10px #34d99a"></span>知识星球 · 机构与FICC从业者社群</div>
+    <h1>全球宏观投研交易</h1>
+    <p class="sub">前瞻交易机会<span class="sep">·</span>高胜率策略<span class="sep">·</span>专业投研框架</p>
+    <div class="hero-cta" style="margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-blue" href="${JOIN}" target="_blank" rel="noopener">加入专业投研网络</a>
+      <a class="btn btn-ghost-l" href="#i-assets">查看覆盖品种</a>
+    </div>
+    <div class="i-stats">
+      <div class="i-stat"><div class="v num"><span class="cnt" data-n="9">0</span><em>大</em></div><div class="l">覆盖资产类别</div></div>
+      <div class="i-stat"><div class="v num"><span class="cnt" data-n="20">0</span><em>+篇</em></div><div class="l">原创投研框架</div></div>
+      <div class="i-stat"><div class="v num"><span class="cnt" data-n="3">0</span><em>套</em></div><div class="l">专业数据终端可查</div></div>
+      <div class="i-stat"><div class="v num">¥<span class="cnt" data-n="100">0</span><em>/人</em></div><div class="l">邀请赏金上不封顶</div></div>
+    </div>
+  </div>
+  <div class="ticker"><div class="ticker-inner">${tickerHtml}${tickerHtml}</div></div>
+</div>
+
+<section class="sec" id="i-benefits"><div class="container">
+  <h2 class="sec-title reveal">九大核心权益</h2>
+  <p class="sec-sub reveal">围绕「研判 — 执行 — 复盘 — 沉淀」的完整闭环</p>
+  <div class="i-grid">
+    ${I_BENEFITS.map((b,i)=>`<div class="i-card reveal${b.b?' bounty':''}"><div class="ico">${svg(P[b.ic],22)}</div><h4>${b.t}</h4><p>${b.d}</p></div>`).join('')}
+  </div>
+</div></section>
+
+<section class="sec" id="i-assets" style="background:rgba(2,6,23,.5)"><div class="container">
+  <h2 class="sec-title reveal">覆盖资产类别</h2>
+  <p class="sec-sub reveal">多资产、多方向——把握一个品种即可盈利</p>
+  <div class="a-cats">${catHtml}</div>
+  <div class="a-note">${DATA_AS_OF} · 多空标签为当前策略方向，随行情动态调整</div>
+</div></section>
+
+<section class="sec"><div class="container">
+  <h2 class="sec-title reveal">与谁同行</h2>
+  <p class="sec-sub reveal">成员画像来自真实从业分布</p>
+  <div class="member-tags reveal">
+    <span class="m-tag">基金经理</span><span class="m-tag">交易员</span><span class="m-tag">研究员</span>
+    <span class="m-tag">资管从业者</span><span class="m-tag">FICC 从业者</span><span class="m-tag">私募 / 券商自营</span>
+    <span class="m-tag">期货资管</span><span class="m-tag">家族办公室</span>
+  </div>
+  <div class="i-rev reveal"><div id="revBox">${revs}</div><div class="rev-dots">${dots}</div></div>
+  <div class="safe-box reveal">
+    <span class="ic">${svg(P.lock,20)}</span>
+    <div class="tx"><b>内容保护提示：</b>星球内容受社群规则保护，违规截图或外传将被移出且不再补发。请共同维护专业投研环境——深度内容只留给同行者。</div>
+  </div>
+</div></section>
+
+<section class="sec" id="i-faq" style="padding-top:20px"><div class="container">
+  <h2 class="sec-title reveal">常见问题</h2>
+  <div class="faq reveal">
+    ${I_FAQ.map((f,i)=>`<div class="fq" data-fq="${i}"><div class="q">${f.q}<span class="chev">${svg(P.chev,18)}</span></div><div class="a">${f.a}</div></div>`).join('')}
+  </div>
+</div></section>
+
+<div class="final-inst"><div class="container">
+  <h2 class="reveal">在信息差即 Alpha 的市场里，与顶尖从业者同行</h2>
+  <p class="reveal">九大品种 · 前瞻研判 · 终端数据 · 定期路演——把「策略看对」变成「交易做对」</p>
+  <div class="btns reveal">
+    <a class="btn btn-blue" href="${JOIN}" target="_blank" rel="noopener">立即加入，与顶尖从业者同行</a>
+    <button class="btn btn-ghost-l" onclick="openWx()">咨询客服微信</button>
+  </div>
+  <div class="cs">邀请好友加入各得赏金 · 每邀 1 人 ¥100，上不封顶</div>
+</div></div>
+</div>`;
 }
 
 /* ============ ROUTER ============ */
-let curRoute='home',cleanupCanvas=[];
-function setRoute(r){
-  if(r===curRoute)return;
-  curRoute=r;
-  history.replaceState(null,'','#/'+(r==='home'?'':r));
-  const app=document.getElementById('app');
-  app.style.opacity='0';app.style.transform='translateX(30px)';
-  setTimeout(()=>{render();window.scrollTo(0,0);requestAnimationFrame(()=>{app.style.opacity='1';app.style.transform='translateX(0)';});},220);
-  document.querySelectorAll('.nav-pills button[data-route]').forEach(b=>b.classList.toggle('on',b.dataset.route===r));
-}
-function nav(r){setRoute(r);}
-
-/* ============ RENDER ============ */
-function render(){
-  cleanupCanvas.forEach(c=>c&&c());
-  cleanupCanvas=[];
-  const app=document.getElementById('app');
-  app.className='page';
-  const route=curRoute;
-  if(route==='home')app.innerHTML=homeHTML();else if(route==='institution')app.innerHTML=instHTML();else app.innerHTML=retailHTML();
-  afterRender(route);
-}
-function homeHTML(){
-  const dualCards=`
-  <div class="dual">
-    <button class="card inst-card" onclick="nav('institution')">
-      <div class="glow"></div>
-      <div class="ico">${svg(I.building,28)}</div>
-      <div class="kicker">通道一</div>
-      <h3>机构通道</h3>
-      <p>为基金、券商、资管提供跨资产投研基础设施，打破数据孤岛与信息壁垒</p>
-      <span class="go">进入专区 ${svg(I.arrow,16)}</span>
-    </button>
-    <button class="card retail-card" onclick="nav('retail')">
-      <div class="glow"></div><span class="recommend">推荐</span>
-      <div class="ico">${svg(I.growth,28)}</div>
-      <div class="kicker">通道二</div>
-      <h3>散户通道</h3>
-      <p>获取前瞻交易机会，构建你的宏观交易体系，把握一个品种即可赚钱</p>
-      <span class="go">立即加入 ${svg(I.arrow,16)}</span>
-    </button>
-  </div>`;
-  const metrics=METRICS.map(m=>`<div class="metric glass"><div class="v num"><span data-count="${m.n}">0</span><span class="suf">${m.s}</span></div><div class="l">${m.l}</div></div>`).join('');
-  const mq=[...INST_TYPES,...INST_TYPES].map(t=>`<span><span class="d"></span>${t}</span>`).join('');
-  return `
-  <section class="hero">
-    <img class="hero-img" src="assets/hero-bg.jpg" alt="" aria-hidden="true">
-    <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none"></div>
-    <div class="hero-fade"></div>
-    <div class="hero-inner">
-      <div class="badge glass fade-up" style="animation-delay:.05s">${svg(I.spark,12)} 全球宏观 · 跨资产投研 · 前瞻信号</div>
-      <h1 class="fade-up" style="animation-delay:.1s">全球宏观<span class="accent gold-text">投研交易</span></h1>
-      <p class="hero-sub fade-up" style="animation-delay:.2s">连接机构级投研能力与个人交易者的桥梁</p>
-      ${dualCards}
-    </div>
-    <div class="trust">
-      <div class="metrics">${metrics}</div>
-      <div class="marquee-wrap"><div class="marquee">${mq}</div></div>
-    </div>
-  </section>`;
-}
-function instHTML(){
-  const pains=[{i:'01',t:'数据分散',d:'Wind、Eikon、彭博多终端切换，跨资产视角难以统一，投研效率被工具割裂拖累'},{i:'02',t:'跨资产视角缺失',d:'单一资产研究难见全局，FICC联动、股债跷跷板、汇率传导链条被忽视'},{i:'03',t:'路演成本高',d:'外部路演信息滞后且同质化，原创框架稀缺，策略落地缺少纠错机制'}]
-  .map(p=>`<div class="pain glass reveal"><div class="n num">${p.i}</div><h4>${p.t}</h4><p>${p.d}</p></div>`).join('');
-  const sols=[{l:'数据层',ic:I.db,c:'#4c9ed9',it:['Wind / Eikon / 彭博实时查询','跨资产行情与基本面联动','机构级数据接口与截图支持']},{l:'框架层',ic:I.layers,c:'#f5c542',it:['FICC资产配置模型','全球宏观对冲框架','组合构建与风险预算']},{l:'执行层',ic:I.target,c:'#e94560',it:['策略路演与复盘','交易纠错工作坊','实盘信号跟踪与回测']}]
-  .map(s=>`<div class="sol reveal" style="border-color:${s.c}40"><div class="ico" style="background:${s.c}20;color:${s.c}">${svg(s.ic,24)}</div><div class="layer" style="color:${s.c}">${s.l}</div><ul>${s.it.map(it=>`<li>${svg(I.check,16)}${it}</li>`).join('')}</ul></div>`).join('');
-  const ck=['按席位与终端用量灵活计费','可定制专属路演与工作坊','机构账户对公结算'].map(t=>`<li>${svg(I.check,16)}${t}</li>`).join('');
-  return `
-  <div class="inst-page">
-    <section class="section container" style="position:relative;overflow:hidden">
-      <img class="hero-img" src="assets/hero-bg.jpg" style="opacity:.22" alt="" aria-hidden="true">
-      <div style="position:relative">
-        <div class="badge glass" style="display:inline-flex">${svg(I.building,14)} 机构专区 · INSTITUTIONAL</div>
-        <h2 style="margin-top:16px">投研效率提升<br><span class="gold-text">打破信息壁垒</span></h2>
-        <p class="sub" style="max-width:560px;margin-top:14px">为专业机构提供跨资产、跨终端、跨周期的投研基础设施，让框架沉淀为可复用的资产配置能力</p>
-      </div>
-    </section>
-    <section class="section container center">
-      <h3 style="font-size:22px;font-weight:800">您的投研团队是否面临……</h3>
-      <div class="pains">${pains}</div>
-    </section>
-    <section class="section container">
-      <div class="center"><h3 style="font-size:22px;font-weight:800">三层解决方案矩阵</h3><p class="sub">从数据到框架，从框架到执行，构建闭环投研链路</p></div>
-      <div class="solutions">${sols}</div>
-    </section>
-    <section class="section container">
-      <div class="diff">
-        <div class="glow"></div>
-        <div style="position:relative">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">${svg(I.shield,24)}<h3 style="margin:0">差异化优势 · 稀缺性</h3></div>
-          <div class="row">
-            <div><div class="t">防抄袭机制</div><p>原创投研框架仅在星球内独家发布，不对外公开流转，保护策略先行者的信息优势与持仓安全。</p></div>
-            <div><div class="t">稀缺性提示</div><p>原创框架累计已达 <span class="num gold-text" style="font-size:18px;font-weight:800">20</span> 篇，每满 20 篇涨价 <span class="num gold-text" style="font-size:18px;font-weight:800">100</span> 元。框架持续沉淀，价值与价格同步上行。</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section container">
-      <div class="pricing">
-        <div>
-          <h3 style="font-size:28px;font-weight:800;margin-bottom:14px">定制化机构方案</h3>
-          <p class="sub" style="line-height:1.7">机构需求差异显著，价格依数据终端用量、路演频次、席位数量定制。申请试用后由机构销售对接，匹配专属方案。</p>
-          <ul>${ck}</ul>
-        </div>
-        <div class="form glass" id="instForm">
-          <h4>申请试用</h4>
-          <div class="field"><label>公司名称</label><input id="f1" placeholder="如：XX资本管理有限公司"></div>
-          <div class="field"><label>职位</label><input id="f2" placeholder="如：投资总监 / 研究主管"></div>
-          <div class="field"><label>管理规模</label><input id="f3" placeholder="如：5亿 / 20亿"></div>
-          <div class="field"><label>需求描述</label><textarea id="f4" rows="3" placeholder="简述贵司投研痛点与期望"></textarea></div>
-          <button class="btn-gold" onclick="submitInst()">提交申请，获取定制方案</button>
-        </div>
-      </div>
-    </section>
-    <div class="spacer"></div>
-  </div>`;
-}
-function retailHTML(){
-  const cards=ASSETS.map(a=>`<div class="asset ${a.dir>0?'long':'short'} glass" style="border-color:${a.dir>0?'rgba(76,217,158,.25)':'rgba(233,69,96,.25)'}"><div class="top"><span class="nm">${a.name}</span><span class="tag">${a.tag}</span></div><div class="px num">${a.price}</div><div class="chg num">${a.chg}</div><div class="note">${a.note}</div><div class="full">${a.full}</div></div>`).join('');
-  const tl=TIMELINE.map((t,i)=>`<div class="tl-item ${i%2===0?'left':'right'} reveal"><div class="tl-dot"></div><div class="tl-card"><div class="tl-inner glass"><div class="tl-stage num">${t.stage}</div><h4>${t.title}</h4><p>${t.desc}</p></div></div></div>`).join('');
-  const freeNeed=FREE_NEED;
-  const cdRemain=NEXT-CURRENT;
-  const cdPct=Math.round(CURRENT/NEXT*100);
-  const benefits=BENEFITS.map(b=>`<li>${svg(I.check,16)}${b}</li>`).join('');
-  return `
-  <div class="retail-page">
-    <section class="retail-hero">
-      <img class="hero-img" src="assets/hero-bg.jpg" alt="" aria-hidden="true">
-      <div class="inner">
-        <div class="badge glass" style="display:inline-flex;color:var(--retail-gold)">${svg(I.spark,12)} 散户专区 · RETAIL</div>
-        <h2 style="margin-top:16px">把握一个品种<br><span class="gold-text">即可赚钱</span></h2>
-        <p class="sub" style="max-width:600px;margin:14px auto 0">不需要盯住所有品种。跟随前瞻信号，在恒科、黄金、美债中捕捉趋势，从零到一构建你的宏观交易体系。</p>
-      </div>
-    </section>
-    <section class="section container">
-      <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:18px"><div><h3 style="font-size:20px;font-weight:800">覆盖交易机会</h3><p class="sub" style="margin-top:4px">9 大品种前瞻信号 · 多空状态实时跟踪</p></div><span style="font-size:10px;color:#64748b">${DATA_AS_OF}</span></div>
-      <div class="assets hide-scroll">${cards}</div>
-    </section>
-    <section class="section container center"><h3 style="font-size:24px;font-weight:800">成长路径</h3><p class="sub">从认知建立到实盘跟随，四步构建交易体系</p>
-      <div class="timeline"><div class="tl-line"></div>${tl}</div>
-    </section>
-    <section class="section container">
-      <div class="calc">
-        <div class="glow"></div>
-        <div class="calc-grid">
-          <div>
-            <h3>邀请返利计算器</h3>
-            <p class="desc">新人券减 <span style="color:var(--retail-gold);font-weight:700">¥${COUPON}</span>，邀请 1 人再得 <span style="color:var(--retail-gold);font-weight:700">¥${PER_INVITE}</span>，邀请 <span style="color:var(--retail-gold);font-weight:700">${freeNeed}</span> 人后零成本加入。</p>
-            <div class="calc-row">
-              <button class="calc-btn glass" onclick="setInv(Math.max(0,invited-1))">−</button>
-              <input type="range" min="0" max="10" value="1" id="invRange" oninput="setInv(+this.value)">
-              <button class="calc-btn glass" onclick="setInv(Math.min(10,invited+1))">+</button>
-            </div>
-            <div class="calc-inv"><span style="font-size:14px;color:#94a3b8">已邀请</span><span class="n num" id="invN">1</span><span style="font-size:14px;color:#94a3b8">人</span></div>
-          </div>
-          <div class="calc-box glass">
-            <div class="calc-row2"><span class="l">年费标价</span><span class="v num strike">¥${YEAR_PRICE}</span></div>
-            <div class="calc-row2"><span class="l">新人券</span><span class="v num" style="color:#f5c542">−¥${COUPON}</span></div>
-            <div class="calc-row2"><span class="l">邀请返现</span><span class="v num" style="color:#6ee7b7">−¥<span id="rebateN">${PER_INVITE}</span></span></div>
-            <div class="calc-final"><span class="l">实付首年</span><span class="v gold-text">¥<span id="finalN">${YEAR_PRICE-COUPON-PER_INVITE}</span></span></div>
-            <div class="calc-free" id="freeTip" style="display:none">🎉 已实现免费加入！</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section container center">
-      <h3 style="font-size:24px;font-weight:800">会员定价</h3><p class="sub">点击卡片翻转查看权益清单</p>
-      <div class="flip" id="flipCard" onclick="this.classList.toggle('flipped')">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="renew">续费七折</span>
-            <div class="m">年费会员</div>
-            <div class="price"><span class="c num">¥</span><span class="p gold-text">${YEAR_PRICE}</span><span class="y">/年</span></div>
-            <div class="orig">原价 ¥699 · 券后 ¥${YEAR_PRICE-COUPON}</div>
-            <div class="hint">点击翻转查看权益 →</div>
-            <div class="cd"><div class="t">距离下次涨价</div><div class="n num">还差 ${cdRemain} 篇原创框架</div><div class="cd-bar"><i style="width:${cdPct}%"></i></div><div class="s">已发布 ${CURRENT} 篇 / 满 ${NEXT} 篇涨价 100 元</div></div>
-          </div>
-          <div class="flip-face flip-back">
-            <div class="t">会员权益清单</div>
-            <ul>${benefits}</ul>
-            <div class="hint">← 点击翻回正面</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section container center">
-      <h3 style="font-size:24px;font-weight:800">星球新人优惠券 · 客服微信</h3><p class="sub">立减 ¥${COUPON}，2030/07/15 前加入可直接使用</p>
-      <div class="coupon-wrap">
-        <div class="coupon-img-wrap reveal">
-          <img class="coupon-img" src="assets/coupon-zsxq-original.png" alt="全球宏观投研交易 星球新人优惠券 立减 ¥${COUPON}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
-          <div class="coupon-fallback" style="display:none">
-            <div class="cb-left"><span class="cb-tag">立减</span><div class="cb-amt"><span class="cb-yo">¥</span><span class="cb-v">${COUPON}</span></div></div>
-            <div class="cb-right"><div class="cb-title">新人立减券</div><div class="cb-exp">${COUPON_EXPIRE} 后失效<br>首年订阅可用 · 每人 1 张</div></div>
-          </div>
-        </div>
-        <div class="wxcard glass reveal">
-          <div class="w-head"><div class="w-logo">微</div><div class="wt">添加客服微信</div></div>
-          <img class="wq" src="assets/qr-wechat-official.png" alt="微信客服官方二维码" loading="lazy">
-          <div class="wdesc">微信扫一扫 · 长按识别添加</div>
-          <div class="wd"><strong style="color:#e94560;font-size:14px">macroficc</strong><br>搜索微信号或直接扫码<br>获取最新加入通道与定价</div>
-        </div>
-      </div>
-    </section>
-    <div class="spacer"></div>
-  </div>`;
-}
-
-/* ============ STATE & INTERACTIONS ============ */
-let invited=1;
-function setInv(v){invited=v;const r=document.getElementById('invRange');if(r)r.value=v;const invN=document.getElementById('invN');if(invN)invN.textContent=v;const rebate=Math.min(v,5)*PER_INVITE;const coupon=COUPON;const totalOff=rebate+coupon;const final=Math.max(YEAR_PRICE-totalOff,0);const rb=document.getElementById('rebateN');if(rb)rb.textContent=rebate;const fn=document.getElementById('finalN');if(fn)fn.textContent=final;const ft=document.getElementById('freeTip');if(ft)ft.style.display=totalOff>=YEAR_PRICE?'block':'none';}
-function submitInst(){const f=document.getElementById('instForm');const v=id=>(document.getElementById(id)?.value||'').trim();if(!v('f1')||!v('f2')||!v('f3')||!v('f4')){alert('请填写完整信息');return;}f.innerHTML=`<div class="form-ok"><div class="ico">${svg(I.check,32)}</div><h4 style="font-size:18px;font-weight:700;margin-bottom:8px">申请已提交</h4><p class="d">机构销售将在 1 个工作日内与您联系，沟通定制方案。</p></div>`;}
-
-/* ============ AFTER RENDER ============ */
-function afterRender(route){
-  const dark=document.documentElement.classList.contains('dark');
-  document.querySelectorAll('canvas[data-canvas]').forEach(cv=>{
-    const isDark=cv.dataset.canvas==='dark';
-    cleanupCanvas.push(mountCanvas(cv,isDark));
-  });
-  document.querySelectorAll('[data-count]').forEach(el=>{const t=parseInt(el.dataset.count,10);const suf=el.querySelector('.suf')?.outerHTML||'';countUp(el,t);});
-  revealObs(document.getElementById('app'));
-  if(route==='retail')setInv(1);
-}
-
-/* ============ INIT ============ */
 const app=document.getElementById('app');
-app.style.transition='opacity .35s ease,transform .35s cubic-bezier(.22,1,.36,1)';
-const hash=location.hash.replace('#/','');curRoute=['institution','retail'].includes(hash)?hash:'home';
-document.querySelectorAll('.nav-pills button[data-route]').forEach(b=>b.classList.toggle('on',b.dataset.route===curRoute));
+function route(){
+  const h=location.hash||'#/';
+  let page='home';
+  if(h.startsWith('#/retail'))page='retail';
+  else if(h.startsWith('#/inst'))page='inst';
+  document.body.className='t-'+page;
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===page));
+  app.innerHTML=page==='retail'?renderRetail():page==='inst'?renderInst():renderHome();
+  window.scrollTo(0,0);
+  initPage(page);
+}
+addEventListener('hashchange',route);
 
-document.querySelectorAll('.nav-pills button[data-route]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.route)));
-
-const themeBtn=document.getElementById('themeBtn');
-function paintTheme(){const dark=document.documentElement.classList.contains('dark');themeBtn.innerHTML=svg(dark?I.sun:I.moon,18);themeBtn.style.color=dark?'#cbd5e1':'#475569';}
-themeBtn.addEventListener('click',()=>{document.documentElement.classList.toggle('dark');paintTheme();render();});
-paintTheme();
-
-document.getElementById('closeTopbar').addEventListener('click',()=>{document.getElementById('topbar').style.display='none';const nav=document.querySelector('.nav');nav.style.top='6px';});
-const wxBtn=document.getElementById('wxBtn'),wxPop=document.getElementById('wxPop'),wxBadge=document.getElementById('wxBadge');
-wxBtn.addEventListener('click',()=>{const open=wxPop.style.display!=='none';wxPop.style.display=open?'block':'none';wxBadge.style.display=open?'block':'none';if(!open){wxPop.classList.add('fade-up');}});
-
-window.nav=nav;window.setInv=setInv;window.submitInst=submitInst;
-render();
+/* ============ INTERACTIONS ============ */
+let revTimer=null;
+function initPage(page){
+  /* reveal（无 IntersectionObserver 环境降级：直接显示） */
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);
+      e.target.querySelectorAll('.cnt').forEach(animateCount);}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);io2.unobserve(e.target)}}),{threshold:.4});
+    document.querySelectorAll('.cnt').forEach(el=>io2.observe(el));
+  }else{
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('.cnt').forEach(el=>el.textContent=el.dataset.n);
+  }
+  /* carousel */
+  if(revTimer){clearInterval(revTimer);revTimer=null}
+  const revs=document.querySelectorAll('[data-rev]');
+  if(revs.length){
+    let cur=0;const dots=document.querySelectorAll('[data-dot]');
+    const go=i=>{cur=(i+revs.length)%revs.length;revs.forEach((r,k)=>r.classList.toggle('on',k===cur));dots.forEach((d,k)=>d.classList.toggle('on',k===cur))};
+    dots.forEach(d=>d.onclick=()=>{go(+d.dataset.dot);restart()});
+    let restart=()=>{if(revTimer)clearInterval(revTimer);revTimer=setInterval(()=>go(cur+1),4500)};
+    restart();
+  }
+  /* FAQ (inst) */
+  document.querySelectorAll('.fq .q').forEach(q=>q.onclick=()=>{
+    const box=q.parentElement;const open=box.classList.contains('open');
+    box.parentElement.querySelectorAll('.fq').forEach(f=>f.classList.remove('open'));
+    if(!open)box.classList.add('open');
+  });
+  /* canvas (inst) */
+  const cv=document.getElementById('instCv');
+  if(cv)mountCanvas(cv);
+}
+function animateCount(el){
+  if(el.dataset.done)return;el.dataset.done=1;
+  const n=+el.dataset.n,dur=900,t0=performance.now();
+  const step=t=>{const p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+function mountCanvas(cv){
+  const ctx=cv.getContext('2d');if(!ctx)return;
+  const dpr=window.devicePixelRatio||1;
+  function draw(){
+    const w=cv.offsetWidth,h=cv.offsetHeight;
+    cv.width=w*dpr;cv.height=h*dpr;ctx.clearRect(0,0,cv.width,cv.height);
+    const cw=11*dpr,gap=5*dpr,n=Math.ceil(cv.width/(cw+gap))+3;
+    let price=cv.height*0.55;const candles=[];
+    for(let i=0;i<n;i++){const o=price,d=(Math.random()-.5)*cv.height*.06,c=Math.max(14*dpr,Math.min(cv.height-14*dpr,price+d));price=c;
+      candles.push({o,c,hi:Math.min(o,c)-Math.random()*cv.height*.02,lo:Math.max(o,c)+Math.random()*cv.height*.02});}
+    candles.forEach((k,i)=>{const x=i*(cw+gap)+cw*.5;const up=k.c>=k.o;
+      ctx.strokeStyle=up?'rgba(16,185,129,.4)':'rgba(239,68,68,.4)';ctx.lineWidth=1.4*dpr;
+      ctx.beginPath();ctx.moveTo(x,k.hi);ctx.lineTo(x,k.lo);ctx.stroke();
+      ctx.fillStyle=up?'rgba(16,185,129,.32)':'rgba(239,68,68,.32)';
+      ctx.fillRect(x-cw/2,Math.min(k.o,k.c),cw,Math.max(2*dpr,Math.abs(k.c-k.o)));});
+    /* 均线 */
+    ctx.strokeStyle='rgba(59,130,246,.5)';ctx.lineWidth=1.6*dpr;ctx.beginPath();
+    let y=cv.height*.5;for(let i=0;i<n;i++){y=y*.7+candles[i].c*.3;const x=i*(cw+gap)+cw*.5;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+    ctx.stroke();
+  }
+  draw();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,150)});
+}
+/* modal */
+function openWx(){document.getElementById('wxModal').classList.add('on')}
+function closeWx(){document.getElementById('wxModal').classList.remove('on')}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeWx()});
+route();
 </script>
 </body>
 </html>
