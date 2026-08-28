@@ -1,4 +1,4 @@
-import json, urllib.request, urllib.parse, os, sys
+import json, urllib.request, urllib.parse, os, sys, time, re
 
 QID = "FVWmROVvhgjRPC-4jAUh8A"
 LIST_ID = "1812649718805385482"
@@ -29,6 +29,8 @@ def api_fetch(vars):
     return resp.status, resp.read().decode("utf-8", "replace")
 
 def extract_tweet(t):
+    if not t:
+        return None
     tw = t.get("tweet") if t.get("__typename") == "TweetWithVisibilityResults" else t
     if not tw or not tw.get("legacy"):
         return None
@@ -54,7 +56,9 @@ def extract_tweet(t):
 def main():
     all_tweets = {}
     cursor = None
-    for page in range(4):
+    now = time.time()
+    cutoff = now - 26 * 3600  # 26h window for safety
+    for page in range(6):
         vars = {"listId": LIST_ID, "count": 25}
         if cursor:
             vars["cursor"] = cursor
@@ -72,31 +76,77 @@ def main():
         data = json.loads(body)
         if page == 0:
             with open("data/raw.json", "w") as f:
-                f.write(body[:200000])
-        tl = data.get("data", {}).get("listLatestTweetsTimeline", {})
+                f.write(body[:500000])
+
+        # New API structure: data.list.tweets_timeline.timeline.instructions
+        tl = data.get("data", {}).get("list", {}).get("tweets_timeline", {})
+        if not tl:
+            # Old API structure fallback
+            tl = data.get("data", {}).get("listLatestTweetsTimeline", {})
         insts = tl.get("timeline", {}).get("instructions", [])
         got = 0
+        oldest_seen = None
         for i in insts:
             for e in i.get("entries", []) or []:
                 c = e.get("content", {})
-                if c.get("entryType") == "TimelineTimelineItem":
+                if c.get("entryType") == "TimelineTimelineModule":
+                    # Module contains items array
+                    for sub in c.get("items", []) or []:
+                        t = sub.get("item", {}).get("itemContent", {}).get("tweet_results", {}).get("result")
+                        if t:
+                            tw = extract_tweet(t)
+                            if tw:
+                                all_tweets[tw["id"]] = tw
+                                got += 1
+                elif c.get("entryType") == "TimelineTimelineItem":
                     t = c.get("itemContent", {}).get("tweet_results", {}).get("result")
                     if t:
                         tw = extract_tweet(t)
                         if tw:
                             all_tweets[tw["id"]] = tw
                             got += 1
-                elif c.get("entryType") == "TimelineTimelineCursor" and c.get("cursorType") == "Bottom":
+                if c.get("entryType") == "TimelineTimelineCursor" and c.get("cursorType") == "Bottom":
                     cursor = c.get("value")
-        if page == 0:
-            print("TOP KEYS:", list(data.keys()))
-            print("TL KEYS:", list(tl.keys()) if isinstance(tl, dict) else tl)
+
         print(f"page {page}: +{got} tweets, cursor={'yes' if cursor else 'none'}")
         if not cursor or got == 0:
             break
+        # Stop if all tweets on this page are older than cutoff
+        page_tweets = [tw for tw in all_tweets.values() if tw.get("at")]
+        if page_tweets:
+            # Parse oldest tweet time
+            try:
+                ts = max(time.mktime(time.strptime(t["at"], "%a %b %d %H:%M:%S +0000 %Y")) for t in page_tweets if t.get("at"))
+                if ts < cutoff:
+                    print("reached cutoff, stopping")
+                    break
+            except Exception as ex:
+                print("time parse err:", ex)
+
+    # Filter to 24h and remove duplicates by text
+    result = []
+    seen_texts = set()
+    for tw in all_tweets.values():
+        try:
+            ts = time.mktime(time.strptime(tw["at"], "%a %b %d %H:%M:%S +0000 %Y"))
+        except Exception:
+            continue
+        if now - ts > 24 * 3600 + 1800:
+            continue
+        # Deduplicate by normalized text
+        txt_norm = re.sub(r'\s+', ' ', tw["txt"]).strip().lower()[:150]
+        if txt_norm in seen_texts:
+            continue
+        seen_texts.add(txt_norm)
+        tw["ts"] = int(ts)
+        result.append(tw)
+    result.sort(key=lambda x: -x["ts"])
+
     with open("data/tweets.json", "w") as f:
-        json.dump({"fetched_at": __import__("time").strftime("%Y-%m-%dT%H:%M:%SZ", __import__("time").gmtime()), "count": len(all_tweets), "tweets": list(all_tweets.values())}, f, ensure_ascii=False, indent=1)
-    print("TOTAL:", len(all_tweets))
+        json.dump({"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "count": len(result), "tweets": result}, f, ensure_ascii=False, indent=1)
+    print("TOTAL:", len(result))
+    for t in result[:5]:
+        print("  sample:", t["user"], "-", t["txt"][:60])
 
 if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
