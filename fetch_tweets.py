@@ -35,7 +35,12 @@ def extract_tweet(t):
     if not tw or not tw.get("legacy"):
         return None
     core = tw.get("core", {}).get("user_results", {}).get("result", {})
-    u = core.get("legacy", {}) or {}
+    # New API: core.user_results.result.core.screen_name
+    # Old API: core.user_results.result.legacy.screen_name
+    u = core.get("legacy", {}) or core.get("core", {}) or {}
+    user_core = core.get("core", {}) or {}
+    screen_name = u.get("screen_name", "") or user_core.get("screen_name", "")
+    uname = u.get("name", "") or user_core.get("name", "")
     photos = []
     for m in tw.get("extended_entities", {}).get("media", []) or []:
         if m.get("type") == "photo":
@@ -48,8 +53,8 @@ def extract_tweet(t):
         "id": tw["legacy"].get("id_str", ""),
         "at": tw["legacy"].get("created_at", ""),
         "txt": tw["legacy"].get("full_text", ""),
-        "user": u.get("screen_name", ""),
-        "uname": u.get("name", ""),
+        "user": screen_name,
+        "uname": uname,
         "ph": photos,
     }
 
