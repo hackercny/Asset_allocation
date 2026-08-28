@@ -150,8 +150,20 @@ def main():
     with open("data/tweets.json", "w") as f:
         json.dump({"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "count": len(result), "tweets": result}, f, ensure_ascii=False, indent=1)
     print("TOTAL:", len(result))
-    for t in result[:5]:
-        print("  sample:", t["user"], "-", t["txt"][:60])
+
+    # Download images
+    os.makedirs("data/imgs", exist_ok=True)
+    for i, tw in enumerate(result):
+        for j, url in enumerate(tw["ph"]):
+            fname = f"data/imgs/t{i}_{j}.jpg"
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": UA})
+                resp = urllib.request.urlopen(req, timeout=30)
+                with open(fname, "wb") as f:
+                    f.write(resp.read())
+                print(f"img OK {fname}")
+            except Exception as e:
+                print(f"img FAIL {fname}: {e}")
 
 if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
