@@ -1,7 +1,27 @@
 {
- "fetched_at": "2026-08-28T10:13:06Z",
- "count": 40,
+ "fetched_at": "2026-08-28T10:16:00Z",
+ "count": 42,
  "tweets": [
+  {
+   "id": "2093281310865277101",
+   "at": "Fri Aug 28 10:15:30 +0000 2026",
+   "txt": "Source: S&amp;P Global",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
+   "ph": [],
+   "ts": 1787912130
+  },
+  {
+   "id": "2093281272118264229",
+   "at": "Fri Aug 28 10:15:21 +0000 2026",
+   "txt": "Big Dominance: China share of global mined production in 2025 (%) 🇨🇳⛏️ https://t.co/jKgultcmfa",
+   "user": "minenergybiz",
+   "uname": "Oliver Groß",
+   "ph": [
+    "https://pbs.twimg.com/media/HQzUBVsXoAA3G9q.png"
+   ],
+   "ts": 1787912121
+  },
   {
    "id": "2093279305564623036",
    "at": "Fri Aug 28 10:07:32 +0000 2026",
